@@ -1,0 +1,3 @@
+[submodule "Project/Project/frontend"]
+	path = Project/Project/frontend
+	url = https://github.com/StrayDogSyn/full-stack-ToDoList-Hunter.git
