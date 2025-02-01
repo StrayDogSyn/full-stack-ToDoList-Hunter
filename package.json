@@ -1,0 +1,16 @@
+{
+  "name": "project-name",
+  "version": "1.0.0",
+  "description": "Your project description",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "nodemon backend/src/index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "project-name": "file:"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.0"
+  }
+}
