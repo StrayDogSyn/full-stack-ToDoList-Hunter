@@ -9,3 +9,6 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
   console.log(`Backend server is running on port ${port}`);
 });
+const taskRoutes = require('./routes/taskRoutes');
+
+app.use('/tasks', taskRoutes);
