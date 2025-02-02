@@ -1,21 +1,28 @@
-import express from 'express';  // Import Express
-import dotenv from 'dotenv';    // Import dotenv for environment variables
+import express from 'express';
+import http from 'http';
 
-dotenv.config();  // Load environment variables from .env
-
-// Initialize the app
 const app = express();
 
-// Middleware to parse incoming JSON requests
-app.use(express.json());
+// Create an array of possible ports to try
+const possiblePorts = [5000, 5001, 5002, 5003];
 
-// Basic route to test the server
-app.get('/', (req, res) => {
-  res.send('Hello, World!');
-});
+const tryPort = (ports) => {
+  if (ports.length === 0) {
+    console.error('No available ports found!');
+    process.exit(1); // Exit if no port is available
+  }
 
-// Start the server
-const PORT = process.env.PORT || 5000;  // Use port from env or default to 5000
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+  const port = ports[0];
+  
+  // Try to start the server on the current port
+  const server = http.createServer(app);
+  
+  server.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+  }).on('error', (err) => {
+    console.log(`Port ${port} is occupied, trying next port...`);
+    tryPort(ports.slice(1)); // Try the next port
+  });
+};
+
+tryPort(possiblePorts);
