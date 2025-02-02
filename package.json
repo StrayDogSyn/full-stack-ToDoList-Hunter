@@ -7,10 +7,25 @@
     "dev": "nodemon backend/src/index.js"
   },
   "dependencies": {
-    "express": "^4.17.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.9.6",
     "project-name": "file:"
   },
   "devDependencies": {
     "nodemon": "^2.0.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StrayDogSyn/full-stack-ToDoList-Hunter.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/StrayDogSyn/full-stack-ToDoList-Hunter/issues"
+  },
+  "homepage": "https://github.com/StrayDogSyn/full-stack-ToDoList-Hunter#readme"
 }
