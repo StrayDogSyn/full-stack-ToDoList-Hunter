@@ -46,3 +46,37 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
+// Import the Task model at the top of the server.js file
+import Task from './models/task.model.js';
+
+// Example POST route to add a task
+app.post('/tasks', async (req, res) => {
+  try {
+    const { title, description } = req.body;
+
+    // Create a new task using the Task model
+    const newTask = new Task({
+      title,
+      description,
+    });
+
+    // Save the task to the database
+    const savedTask = await newTask.save();
+
+    res.status(201).json(savedTask); // Return the saved task as JSON
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Error saving task' });
+  }
+});
+
+// Example GET route to fetch all tasks
+app.get('/tasks', async (req, res) => {
+  try {
+    const tasks = await Task.find();
+    res.json(tasks); // Return the tasks as JSON
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Error fetching tasks' });
+  }
+});

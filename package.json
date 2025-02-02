@@ -1,31 +1,25 @@
 {
-  "name": "project-name",
+  "name": "full-stack-ToDoList-Hunter",
   "version": "1.0.0",
-  "description": "Your project description",
-  "main": "src/index.js",
+  "description": "A full stack To-Do list application",
+  "main": "server.js",
+  "type": "module",
   "scripts": {
-    "dev": "nodemon backend/src/index.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.7",
-    "express": "^4.21.2",
-    "mongoose": "^8.9.6",
-    "project-name": "file:"
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "full-stack-ToDoList-Hunter": "file:",
+    "mongoose": "^5.10.9"
   },
   "devDependencies": {
-    "nodemon": "^2.0.0"
+    "nodemon": "^2.0.15"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/StrayDogSyn/full-stack-ToDoList-Hunter.git"
+  "engines": {
+    "node": ">=14.0.0"
   },
-  "keywords": [],
   "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/StrayDogSyn/full-stack-ToDoList-Hunter/issues"
-  },
-  "homepage": "https://github.com/StrayDogSyn/full-stack-ToDoList-Hunter#readme"
+  "license": "ISC"
 }
