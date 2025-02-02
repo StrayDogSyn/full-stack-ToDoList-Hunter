@@ -11,3 +11,4 @@ Thumbs.db
 coverage/
 *.swp
 *.swo
+mongosh-2.3.8-win32-x64/
