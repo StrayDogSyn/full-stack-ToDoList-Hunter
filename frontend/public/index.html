@@ -5,44 +5,74 @@
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
+    <meta name="description" content="Web site created using create-react-app" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <title>To-Do List App</title>
     
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <!-- Custom CSS -->
     <link href="%PUBLIC_URL%/styles.css" rel="stylesheet">
   </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">To-Do List</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Tasks</a>
-          </li>
-        </ul>
+  <body class="bg-gray-50">
+    <nav class="bg-gradient-to-r from-slate-800 via-slate-600 to-slate-700 p-4 shadow-lg z-50">
+      <div class="flex justify-between items-center max-w-7xl mx-auto">
+        <!-- Logo/Brand Name -->
+        <a class="text-white text-2xl font-bold transition-transform transform hover:scale-105" href="#">To-Do List</a>
+        
+        <!-- Navbar Links (hidden on mobile) -->
+        <div class="flex-1 hidden lg:flex justify-center" id="navbar-links">
+          <div class="relative">
+            <button class="text-white hover:text-slate-300 p-2 rounded-lg transition-all ease-in-out duration-300">
+              Menu
+            </button>
+            <!-- Dropdown Menu -->
+            <div class="dropdown-content absolute bg-slate-700 text-white p-4 rounded-lg shadow-lg hidden lg:block z-50">
+              <a class="block px-4 py-2 hover:bg-slate-500 rounded transition-all" href="#">Home</a>
+              <a class="block px-4 py-2 hover:bg-slate-500 rounded transition-all" href="#">Tasks</a>
+              <a class="block px-4 py-2 hover:bg-slate-500 rounded transition-all" href="#">Settings</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Mobile Navbar Toggle -->
+        <button class="text-white lg:hidden" id="navbar-toggle">
+          ☰
+        </button>
       </div>
     </nav>
     
-    <div class="container mt-4">
+    <div class="container mx-auto mt-8 px-4 mb-8">
+      <!-- Task list input fields -->
+      <input type="text" class="border border-slate-600 p-2 rounded-lg w-full mb-4" placeholder="Add a new task" />
+      <input type="text" class="border border-slate-600 p-2 rounded-lg w-full mb-4" placeholder="Search tasks" />
+      <!-- More task list content goes here -->
       <div id="root"></div>
     </div>
     
-    <!-- Bootstrap 5 JS and Popper.js -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
     <script src="%PUBLIC_URL%/main.js"></script>
+
+    <script>
+      // Navbar toggle script for mobile
+      document.getElementById('navbar-toggle').addEventListener('click', () => {
+        const navbarLinks = document.getElementById('navbar-links');
+        navbarLinks.classList.toggle('hidden');
+      });
+
+      // Hover effect for dropdown menu (larger devices)
+      const menuButton = document.querySelector('.relative');
+      menuButton.addEventListener('mouseenter', () => {
+        const dropdownContent = menuButton.querySelector('.dropdown-content');
+        dropdownContent.classList.remove('hidden');
+      });
+
+      menuButton.addEventListener('mouseleave', () => {
+        const dropdownContent = menuButton.querySelector('.dropdown-content');
+        dropdownContent.classList.add('hidden');
+      });
+    </script>
   </body>
 </html>

@@ -1,9 +1,9 @@
 // src/App.js
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import SplashPage from './components/SplashPage';
+import MainPage from './components/MainPage';
 import './App.css';
 import TaskList from './TaskList';
 
@@ -60,22 +60,27 @@ function App() {
   };
 
   return (
-    <div className="container mt-4">
-      <h1 className="text-center mb-4">To-Do List</h1>
-      <form onSubmit={addTodo} className="mb-3">
-        <div className="input-group">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Add a new task..."
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <button type="submit" className="btn btn-primary">Add</button>
-        </div>
-      </form>
-      <TaskList todos={todos} toggleComplete={toggleComplete} deleteTodo={deleteTodo} />
-    </div>
+    <Router>
+      <Routes>
+        {/* Splash Page Route */}
+        <Route path="/" element={<SplashPage />} />
+        
+        {/* Main Page Route */}
+        <Route
+          path="/main"
+          element={
+            <MainPage
+              todos={todos}
+              toggleComplete={toggleComplete}
+              deleteTodo={deleteTodo}
+              addTodo={addTodo}
+              title={title}
+              setTitle={setTitle}
+            />
+          }
+        />
+      </Routes>
+    </Router>
   );
 }
 
