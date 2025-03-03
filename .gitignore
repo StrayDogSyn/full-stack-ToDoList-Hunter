@@ -18,13 +18,18 @@ temp/
 # Environment variables
 .env
 
-# Frontend build files
+# Frontend specific build files and dependencies
 frontend/build/
 frontend/node_modules/
 
-# IDE specific files
+# IDE and Editor specific files
 .vscode/
 .idea/
 
-# Mac OS specific files
+# Operating system specific files
 .DS_Store
+Thumbs.db
+
+# Package-lock files (optional, depending on your use case)
+# package-lock.json
+# yarn.lock

@@ -1,4 +1,3 @@
-// src/components/TaskList.js
 import React from 'react';
 
 function TaskList({ todos, toggleComplete, deleteTodo }) {

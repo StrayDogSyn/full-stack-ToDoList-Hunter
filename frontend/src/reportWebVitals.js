@@ -1,11 +1,12 @@
-const reportWebVitals = onPerfEntry => {
-  if (onPerfEntry && onPerfEntry instanceof Function) {
+const reportWebVitals = (onPerfEntry) => {
+  if (typeof onPerfEntry === 'function') {
     import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
-      getCLS(onPerfEntry);
-      getFID(onPerfEntry);
-      getFCP(onPerfEntry);
-      getLCP(onPerfEntry);
-      getTTFB(onPerfEntry);
+      // List of vitals to report
+      const vitals = [getCLS, getFID, getFCP, getLCP, getTTFB];
+      
+      vitals.forEach((metric) => metric(onPerfEntry)); // Report each metric
+    }).catch((error) => {
+      console.error("Error loading web-vitals:", error); // Handle the import error
     });
   }
 };

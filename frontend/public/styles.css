@@ -1,0 +1,65 @@
+/* styles.css */
+
+/* Basic reset for consistent styling across browsers */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased; /* Smooth text rendering for better visuals */
+  -moz-osx-font-smoothing: grayscale; /* Ensures smooth font rendering on macOS */
+  padding: 20px;
+}
+
+/* Utility classes */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Example button style */
+.button {
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Button hover effect */
+.button:hover {
+  background-color: #0056b3;
+}
+
+/* Button focus effect */
+.button:focus {
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Custom focus outline for accessibility */
+}
+
+/* Responsive design for small screens */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  .button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}

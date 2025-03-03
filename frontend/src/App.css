@@ -4,6 +4,7 @@
   text-align: center;
   max-width: 600px;
   margin: 0 auto;
+  padding: 20px; /* Added some padding for better spacing */
 }
 
 form {
@@ -14,10 +15,22 @@ input {
   padding: 10px;
   width: 70%;
   margin-right: 10px;
+  border-radius: 5px; /* Added border radius for smoother input */
+  border: 1px solid #ccc; /* Added border for better visibility */
 }
 
 button {
   padding: 10px;
+  border-radius: 5px; /* Added border radius to button */
+  background-color: #4CAF50; /* Added a background color for button */
+  color: white; /* Button text color */
+  border: none; /* Removed the default border */
+  cursor: pointer; /* Cursor changes to pointer on hover */
+  transition: background-color 0.3s ease; /* Added transition for hover effect */
+}
+
+button:hover {
+  background-color: #45a049; /* Darker shade on hover */
 }
 
 ul {
@@ -31,8 +44,13 @@ li {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #f9f9f9; /* Slight background color for list items */
+  padding: 10px;
+  border-radius: 5px; /* Rounded corners for list items */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for better depth */
 }
 
 li span {
   flex-grow: 1;
+  word-wrap: break-word; /* Ensure long words break to the next line */
 }

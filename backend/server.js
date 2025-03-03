@@ -8,8 +8,8 @@ import Task from './models/task.model.js'; // Ensure this path is correct
 const app = express();
 
 // Middleware
-app.use(cors());
-app.use(bodyParser.json());
+app.use(cors()); // Enable Cross-Origin Resource Sharing
+app.use(bodyParser.json()); // Parse incoming JSON requests
 
 // Routes
 app.get('/tasks', async (req, res) => {
@@ -59,7 +59,7 @@ app.delete('/tasks/:id', async (req, res) => {
     if (!deletedTask) {
       return res.status(404).json({ error: 'Task not found' });
     }
-    res.status(204).send();
+    res.status(204).send(); // No content, task deleted
   } catch (error) {
     console.error("Error deleting task:", error);
     res.status(400).json({ error: 'Bad Request' });
@@ -67,15 +67,14 @@ app.delete('/tasks/:id', async (req, res) => {
 });
 
 // MongoDB Connection
-mongoose.connect('mongodb://localhost:27017/todolist', {});
+const mongoURI = process.env.MONGO_URI || 'mongodb://localhost:27017/todolist'; // Using an environment variable for MongoDB URI
 
-mongoose.connection.on('error', (err) => {
-  console.error('MongoDB connection error:', err);
-});
-
-mongoose.connection.once('open', () => {
-  console.log('Connected to MongoDB');
-});
+mongoose.connect(mongoURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+  .then(() => console.log('Connected to MongoDB'))
+  .catch((err) => console.error('MongoDB connection error:', err));
 
 // Start the server
 const possiblePorts = [5000, 5001, 5002, 5003];

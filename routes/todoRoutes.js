@@ -1,5 +1,5 @@
 import express from 'express';
-import todoModel from '../models/Todo.js'; // Import TodoModel instance from correct relative path
+import todoModel from '../models/Todo.js'; // Import TodoModel from the correct relative path
 
 const router = express.Router();
 

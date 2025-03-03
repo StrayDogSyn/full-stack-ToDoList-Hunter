@@ -1,9 +1,6 @@
 // src/App.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import SplashPage from './components/SplashPage';
-import MainPage from './components/MainPage';
 import TaskList from './components/TaskList';
 import './App.css';
 
@@ -55,34 +52,14 @@ function App() {
   };
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<SplashPage />} />
-        <Route 
-          path="/main" 
-          element={
-            <MainPage 
-              todos={todos} 
-              toggleComplete={toggleComplete} 
-              deleteTodo={deleteTodo} 
-              addTodo={addTodo} 
-              title={title} 
-              setTitle={setTitle} 
-            />
-          } 
-        />
-        <Route 
-          path="/tasklist" 
-          element={
-            <TaskList 
-              todos={todos} 
-              toggleComplete={toggleComplete} 
-              deleteTodo={deleteTodo} 
-            />
-          } 
-        />
-      </Routes>
-    </Router>
+    <div className="App">
+      <h1>To-Do List</h1>
+      <TaskList todos={todos} toggleComplete={toggleComplete} deleteTodo={deleteTodo} />
+      <form onSubmit={addTodo}>
+        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Add a new task" />
+        <button type="submit">Add</button>
+      </form>
+    </div>
   );
 }
 

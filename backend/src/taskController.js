@@ -1,8 +1,7 @@
-// backend/src/controllers/taskController.js
-const Task = require('../models/task'); // Make sure you have this Task model
+import Task from '../models/task.js'; // Ensure you have the correct path to the Task model
 
 // Get all tasks
-exports.getAllTasks = async (req, res) => {
+export const getAllTasks = async (req, res) => {
   try {
     const tasks = await Task.find();
     res.status(200).json(tasks);
@@ -12,7 +11,7 @@ exports.getAllTasks = async (req, res) => {
 };
 
 // Create a new task
-exports.createTask = async (req, res) => {
+export const createTask = async (req, res) => {
   const { text, completed } = req.body;
 
   const newTask = new Task({ text, completed });
@@ -26,7 +25,7 @@ exports.createTask = async (req, res) => {
 };
 
 // Update a task
-exports.updateTask = async (req, res) => {
+export const updateTask = async (req, res) => {
   const { id } = req.params;
   const { text, completed } = req.body;
 
@@ -42,7 +41,7 @@ exports.updateTask = async (req, res) => {
 };
 
 // Delete a task
-exports.deleteTask = async (req, res) => {
+export const deleteTask = async (req, res) => {
   const { id } = req.params;
 
   try {

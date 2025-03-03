@@ -1,11 +1,12 @@
-// backend/src/routes/taskRoutes.js
-const express = require('express');
+import express from 'express';
+import { getAllTasks, createTask, updateTask, deleteTask } from '../controllers/taskController.js';
+
 const router = express.Router();
-const taskController = require('../controllers/taskController');
 
-router.get('/', taskController.getAllTasks);
-router.post('/', taskController.createTask);
-router.put('/:id', taskController.updateTask);
-router.delete('/:id', taskController.deleteTask);
+// Routes
+router.get('/', getAllTasks);
+router.post('/', createTask);
+router.put('/:id', updateTask);
+router.delete('/:id', deleteTask);
 
-module.exports = router;
+export default router;

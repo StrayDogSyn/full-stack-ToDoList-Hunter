@@ -1,5 +1,3 @@
-// components/TodoForm.js
-
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -8,12 +6,12 @@ const TodoForm = ({ addTodo }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!text) return;
+    if (!text.trim()) return; // prevent empty task submission
 
     try {
       const res = await axios.post('/api/todos', { text });
-      addTodo(res.data);
-      setText('');
+      addTodo(res.data); // Assuming res.data contains the new todo
+      setText(''); // clear the input field after submission
     } catch (err) {
       console.error('Error adding todo:', err);
     }
@@ -26,6 +24,7 @@ const TodoForm = ({ addTodo }) => {
         placeholder="Add a new task..."
         value={text}
         onChange={(e) => setText(e.target.value)}
+        required
       />
       <button type="submit">Add</button>
     </form>

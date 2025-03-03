@@ -18,7 +18,7 @@ const todoSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     },
-});
+}, { timestamps: true }); // Optional: auto-generate `createdAt` and `updatedAt`
 
 // Create the model based on the schema
 const Todo = mongoose.model('Todo', todoSchema);
@@ -54,6 +54,9 @@ class TodoModel {
     async getById(id) {
         try {
             const todo = await Todo.findById(id);
+            if (!todo) {
+                throw new Error('To-do item not found');
+            }
             return todo;
         } catch (error) {
             throw new Error('Error fetching to-do item: ' + error.message);
@@ -66,6 +69,9 @@ class TodoModel {
             const todo = await Todo.findByIdAndUpdate(id, updatedTask, {
                 new: true, // Return the updated object
             });
+            if (!todo) {
+                throw new Error('To-do item not found');
+            }
             return todo;
         } catch (error) {
             throw new Error('Error updating to-do item: ' + error.message);
@@ -78,6 +84,9 @@ class TodoModel {
             const todo = await Todo.findByIdAndUpdate(id, { completed: true }, {
                 new: true,
             });
+            if (!todo) {
+                throw new Error('To-do item not found');
+            }
             return todo;
         } catch (error) {
             throw new Error('Error marking to-do item as completed: ' + error.message);
@@ -88,6 +97,9 @@ class TodoModel {
     async delete(id) {
         try {
             const deletedTodo = await Todo.findByIdAndDelete(id);
+            if (!deletedTodo) {
+                throw new Error('To-do item not found');
+            }
             return deletedTodo;
         } catch (error) {
             throw new Error('Error deleting to-do item: ' + error.message);
