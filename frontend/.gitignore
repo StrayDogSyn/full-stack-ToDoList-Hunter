@@ -1,0 +1,19 @@
+# Node.js dependencies
+node_modules/
+
+# IDE and editor configurations
+.vscode/
+.vscode-test/
+.vs/
+
+# OS and environment-specific files
+.android/
+.bash_history
+.config/
+OneDrive/
+NTUSER.DAT*
+Saved Games/
+Python/
+
+# Other unnecessary files
+*.log

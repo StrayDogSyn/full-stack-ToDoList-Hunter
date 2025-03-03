@@ -1,0 +1,57 @@
+/* App.css (Component-specific styles) */
+
+/* Centered Header */
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #003366; /* Deep blue color */
+  margin-bottom: 20px;
+}
+
+/* Tasks container (card style) */
+.tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+}
+
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #fafafa;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.task input {
+  margin-right: 15px;
+}
+
+.task-title {
+  flex-grow: 1;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+/* Optional: Add hover effect for better UX */
+.task:hover {
+  background-color: #eef2f7;
+  cursor: pointer;
+}
+
+/* Simple button styles */
+button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #003366;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #00509e;
+}

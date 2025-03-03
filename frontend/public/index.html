@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Todo List</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Todo List</h1>
+  <div id="task-container">
+    <ul id="task-list">
+      <!-- Tasks will be populated here -->
+    </ul>
+    <button class="add-task" id="addTaskButton">Add Task</button>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const taskList = document.getElementById('task-list');
+      const addTaskButton = document.getElementById('addTaskButton');
+
+      // Fetch tasks and render them
+      async function fetchTasks() {
+        try {
+          const response = await fetch('http://localhost:5000/tasks');
+          const tasks = await response.json();
+          renderTasks(tasks);
+        } catch (error) {
+          console.error("Error fetching tasks:", error);
+        }
+      }
+
+      // Render the task list to the page
+      function renderTasks(tasks) {
+        taskList.innerHTML = '';
+        tasks.forEach(task => {
+          const taskItem = document.createElement('li');
+          taskItem.classList.toggle('completed', task.completed);
+
+          taskItem.innerHTML = `
+            <input type="checkbox" ${task.completed ? 'checked' : ''} data-id="${task._id}" />
+            <span>${task.title}</span>
+            <button data-id="${task._id}">Delete</button>
+          `;
+
+          const checkbox = taskItem.querySelector('input[type="checkbox"]');
+          checkbox.addEventListener('change', toggleTaskCompletion);
+
+          const deleteButton = taskItem.querySelector('button');
+          deleteButton.addEventListener('click', deleteTask);
+
+          taskList.appendChild(taskItem);
+        });
+      }
+
+      // Toggle task completion
+      async function toggleTaskCompletion(event) {
+        const taskId = event.target.getAttribute('data-id');
+        const completed = event.target.checked;
+
+        try {
+          await fetch(`http://localhost:5000/tasks/${taskId}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ completed })
+          });
+          fetchTasks(); // Refresh tasks
+        } catch (error) {
+          console.error("Error updating task:", error);
+        }
+      }
+
+      // Delete task
+      async function deleteTask(event) {
+        const taskId = event.target.getAttribute('data-id');
+
+        try {
+          await fetch(`http://localhost:5000/tasks/${taskId}`, {
+            method: 'DELETE'
+          });
+          fetchTasks(); // Refresh tasks
+        } catch (error) {
+          console.error("Error deleting task:", error);
+        }
+      }
+
+      // Add new task
+      addTaskButton.addEventListener('click', async () => {
+        const taskTitle = prompt("Enter new task title:");
+        if (taskTitle) {
+          try {
+            await fetch('http://localhost:5000/tasks', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ title: taskTitle, description: taskTitle })
+            });
+            fetchTasks(); // Refresh tasks
+          } catch (error) {
+            console.error("Error creating task:", error);
+          }
+        }
+      });
+
+      // Initial fetch of tasks
+      fetchTasks();
+    });
+  </script>
+</body>
+</html>
