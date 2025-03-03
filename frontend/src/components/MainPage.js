@@ -1,6 +1,6 @@
 // src/components/MainPage.js
 import React from 'react';
-import TaskList from '../TaskList';  // Import the TaskList component
+import TaskList from './TaskList';
 
 const MainPage = ({ todos, toggleComplete, deleteTodo, addTodo, title, setTitle }) => {
   return (

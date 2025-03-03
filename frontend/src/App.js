@@ -4,7 +4,7 @@ import axios from 'axios';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SplashPage from './components/SplashPage';
 import MainPage from './components/MainPage';
-import TaskList from './TaskList'; // You imported this, now use it
+import TaskList from './components/TaskList';
 import './App.css';
 
 function App() {
@@ -58,9 +58,29 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<SplashPage />} />
-        <Route path="/main" element={<MainPage todos={todos} toggleComplete={toggleComplete} deleteTodo={deleteTodo} addTodo={addTodo} title={title} setTitle={setTitle} />} />
-        {/* Add TaskList Component to Main Page or elsewhere */}
-        <Route path="/tasklist" element={<TaskList todos={todos} toggleComplete={toggleComplete} deleteTodo={deleteTodo} />} />
+        <Route 
+          path="/main" 
+          element={
+            <MainPage 
+              todos={todos} 
+              toggleComplete={toggleComplete} 
+              deleteTodo={deleteTodo} 
+              addTodo={addTodo} 
+              title={title} 
+              setTitle={setTitle} 
+            />
+          } 
+        />
+        <Route 
+          path="/tasklist" 
+          element={
+            <TaskList 
+              todos={todos} 
+              toggleComplete={toggleComplete} 
+              deleteTodo={deleteTodo} 
+            />
+          } 
+        />
       </Routes>
     </Router>
   );
