@@ -1,0 +1,30 @@
+# Ignore system files and directories
+.bash_history
+.config/
+.docker/
+.gitconfig
+.gitignore
+.gk/
+.idlerc/
+.kube/
+.lesshst
+.node_repl_history
+.quokka/
+.redhat/
+.ssh/
+.vs-kubernetes/
+AppData/
+Contacts/
+Downloads/
+Favorites/
+Links/
+Music/
+NTUSER.DAT*
+OneDrive/
+Saved Games/
+Searches/
+Videos/
+mongosh-2.3.8-win32-x64/
+ntuser.dat.LOG1
+ntuser.dat.LOG2
+ntuser.ini
