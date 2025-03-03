@@ -13,7 +13,7 @@ def determine_winner(player, computer):
         case _:
             return "Computer wins!"
 
-def main():
+def play_game():
     print("Welcome to Rock, Paper, Scissors!")
     
     # Ask user how many rounds to play
@@ -29,11 +29,22 @@ def main():
     
     player_score = 0
     computer_score = 0
+    ties = 0
     
     for round_num in range(1, rounds + 1):
         print(f"\nRound {round_num}")
         
+        # Get player input and handle abbreviations
         player_choice = input("Enter rock, paper, or scissors (or 'quit' to stop): ").strip().lower()
+
+        # Handle abbreviations
+        if player_choice == 'r':
+            player_choice = 'rock'
+        elif player_choice == 'p':
+            player_choice = 'paper'
+        elif player_choice == 's':
+            player_choice = 'scissors'
+        
         if player_choice == 'quit':
             print("Thanks for playing!")
             break
@@ -54,8 +65,10 @@ def main():
             player_score += 1
         elif result == "Computer wins!":
             computer_score += 1
+        else:
+            ties += 1
 
-        print(f"Score after round {round_num}: You - {player_score}, Computer - {computer_score}")
+        print(f"Score after round {round_num}: You - {player_score}, Computer - {computer_score}, Ties - {ties}")
     
     # Final score
     if player_score > computer_score:
@@ -65,5 +78,17 @@ def main():
     else:
         print(f"\nIt's a tie! Final score: You - {player_score}, Computer - {computer_score}")
 
+def ask_play_again():
+    while True:
+        play_again = input("\nWould you like to play again? (y/n): ").strip().lower()
+        if play_again == 'y':
+            play_game()
+        elif play_again == 'n':
+            print("Thanks for playing! Goodbye!")
+            break
+        else:
+            print("Invalid input. Please enter 'y' to play again or 'n' to quit.")
+
 if __name__ == "__main__":
-    main()
+    play_game()
+    ask_play_again()
