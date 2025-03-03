@@ -14,10 +14,15 @@
     "express": "^4.21.2",
     "full-stack-todolist-hunter": "file:",
     "mongoose": "^6.0.0",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "semver": "^7.7.1",
+    "simple-update-notifier": "^2.0.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "autoprefixer": "^10.4.20",
+    "nodemon": "^3.1.9",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.0.9"
   },
   "engines": {
     "node": ">=14.0.0"

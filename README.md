@@ -23,7 +23,7 @@ This project is my first foray into full-stack web development, with the goal of
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB
 - **Version Control:** Git, GitHub
-- **Utilities & Tools:** 
+- **Utilities & Tools:**
   - [DevDocs](https://devdocs.io/) for technical documentation
   - [MDN Web Docs](https://developer.mozilla.org/) for reference and best practices
   - GitHub Copilot (used for debugging assistance only)
@@ -32,7 +32,6 @@ This project is my first foray into full-stack web development, with the goal of
 
 The structure of the project is organized as follows:
 
-```
 /full-stack-ToDoList-Hunter
 │
 ├── /client                        # React front-end code
@@ -55,7 +54,6 @@ The structure of the project is organized as follows:
 ├── .env                           # Environment variables (MongoDB URI, server port, etc.)
 ├── package.json                   # Project dependencies and scripts
 └── README.md                      # Project documentation
-```
 
 ## Features
 
