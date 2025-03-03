@@ -1,10 +1,13 @@
 // src/components/MainPage.js
 import React from 'react';
-import TaskList from '../TaskList';
+import TaskList from '../TaskList';  // Import the TaskList component
+
 const MainPage = ({ todos, toggleComplete, deleteTodo, addTodo, title, setTitle }) => {
   return (
     <div className="container mt-4">
       <h1 className="text-center mb-4">To-Do List</h1>
+      
+      {/* Add Todo Form */}
       <form onSubmit={addTodo} className="mb-3">
         <div className="input-group">
           <input
@@ -17,7 +20,13 @@ const MainPage = ({ todos, toggleComplete, deleteTodo, addTodo, title, setTitle 
           <button type="submit" className="btn btn-primary">Add</button>
         </div>
       </form>
-      <TaskList todos={todos} toggleComplete={toggleComplete} deleteTodo={deleteTodo} />
+      
+      {/* Display the TaskList component */}
+      <TaskList 
+        todos={todos} 
+        toggleComplete={toggleComplete} 
+        deleteTodo={deleteTodo} 
+      />
     </div>
   );
 };

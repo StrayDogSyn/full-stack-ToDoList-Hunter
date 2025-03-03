@@ -28,33 +28,3 @@ frontend/node_modules/
 
 # Mac OS specific files
 .DS_Store
-# Node modules
-node_modules/
-**/node_modules/
-
-# Logs
-logs/
-*.log
-npm-debug.log*
-
-# Build directories
-dist/
-build/
-
-# Temporary files
-tmp/
-temp/
-
-# Environment variables
-.env
-
-# Frontend build files
-frontend/build/
-frontend/node_modules/
-
-# IDE specific files
-.vscode/
-.idea/
-
-# Mac OS specific files
-.DS_Store

@@ -1,22 +1,20 @@
 // src/App.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SplashPage from './components/SplashPage';
 import MainPage from './components/MainPage';
+import TaskList from './TaskList'; // You imported this, now use it
 import './App.css';
-import TaskList from './TaskList';
 
 function App() {
   const [todos, setTodos] = useState([]);
   const [title, setTitle] = useState('');
 
-  // Fetch Todos on Component Mount
   useEffect(() => {
     fetchTodos();
   }, []);
 
-  // Fetch Todos Function
   const fetchTodos = async () => {
     try {
       const response = await axios.get('/tasks');
@@ -26,7 +24,6 @@ function App() {
     }
   };
 
-  // Add Todo Function
   const addTodo = async (e) => {
     e.preventDefault();
     if (!title) return;
@@ -39,7 +36,6 @@ function App() {
     }
   };
 
-  // Toggle Complete Function
   const toggleComplete = async (id, completed) => {
     try {
       const response = await axios.put(`/tasks/${id}`, { completed: !completed });
@@ -49,7 +45,6 @@ function App() {
     }
   };
 
-  // Delete Todo Function
   const deleteTodo = async (id) => {
     try {
       await axios.delete(`/tasks/${id}`);
@@ -62,23 +57,10 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Splash Page Route */}
         <Route path="/" element={<SplashPage />} />
-        
-        {/* Main Page Route */}
-        <Route
-          path="/main"
-          element={
-            <MainPage
-              todos={todos}
-              toggleComplete={toggleComplete}
-              deleteTodo={deleteTodo}
-              addTodo={addTodo}
-              title={title}
-              setTitle={setTitle}
-            />
-          }
-        />
+        <Route path="/main" element={<MainPage todos={todos} toggleComplete={toggleComplete} deleteTodo={deleteTodo} addTodo={addTodo} title={title} setTitle={setTitle} />} />
+        {/* Add TaskList Component to Main Page or elsewhere */}
+        <Route path="/tasklist" element={<TaskList todos={todos} toggleComplete={toggleComplete} deleteTodo={deleteTodo} />} />
       </Routes>
     </Router>
   );
