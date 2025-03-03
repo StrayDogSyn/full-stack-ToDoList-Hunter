@@ -1,16 +1,27 @@
 {
-  "name": "project-name",
+  "name": "full-stack-todolist-hunter",
   "version": "1.0.0",
-  "description": "Your project description",
-  "main": "src/index.js",
+  "description": "A full stack To-Do list application",
+  "main": "server.js",
+  "type": "module",
   "scripts": {
-    "dev": "nodemon backend/src/index.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "dependencies": {
-    "express": "^4.17.1",
-    "project-name": "file:"
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.21.2",
+    "full-stack-todolist-hunter": "file:",
+    "mongoose": "^6.0.0",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.0"
-  }
+    "nodemon": "^2.0.15"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "author": "",
+  "license": "ISC"
 }
