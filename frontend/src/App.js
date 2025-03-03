@@ -2,7 +2,10 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './App.css';
+import TaskList from './TaskList';
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -57,30 +60,21 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <h1>To-Do List</h1>
-      <form onSubmit={addTodo}>
-        <input
-          type="text"
-          placeholder="Add a new task..."
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <button type="submit">Add</button>
+    <div className="container mt-4">
+      <h1 className="text-center mb-4">To-Do List</h1>
+      <form onSubmit={addTodo} className="mb-3">
+        <div className="input-group">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Add a new task..."
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <button type="submit" className="btn btn-primary">Add</button>
+        </div>
       </form>
-      <ul>
-        {todos.map((todo) => (
-          <li key={todo._id}>
-            <span
-              onClick={() => toggleComplete(todo._id, todo.completed)}
-              style={{ textDecoration: todo.completed ? 'line-through' : 'none', cursor: 'pointer' }}
-            >
-              {todo.title}
-            </span>
-            <button onClick={() => deleteTodo(todo._id)}>Delete</button>
-          </li>
-        ))}
-      </ul>
+      <TaskList todos={todos} toggleComplete={toggleComplete} deleteTodo={deleteTodo} />
     </div>
   );
 }
