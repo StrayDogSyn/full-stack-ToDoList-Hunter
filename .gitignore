@@ -1,14 +1,29 @@
+# Node modules
 node_modules/
-.env
-*.log
+
+# Logs
 logs/
-/dist
-/build
-.DS_Store
-Thumbs.db
+*.log
+npm-debug.log*
+
+# Build directories
+dist/
+build/
+
+# Temporary files
+tmp/
+temp/
+
+# Environment variables
+.env
+
+# Frontend build files
+frontend/build/
+frontend/node_modules/
+
+# IDE specific files
 .vscode/
 .idea/
-coverage/
-*.swp
-*.swo
-mongosh-2.3.8-win32-x64/
+
+# Mac OS specific files
+.DS_Store
