@@ -1,32 +1,17 @@
 {
-  "name": "full-stack-todolist-hunter",
+  "name": "full-stack-todolist",
   "version": "1.0.0",
-  "description": "A full stack To-Do list application",
-  "main": "server.js",
-  "type": "module",
+  "description": "Full Stack Todo List Application",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
-  },
-  "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^10.0.0",
-    "express": "^4.21.2",
-    "full-stack-todolist-hunter": "file:",
-    "mongoose": "^6.13.8",
-    "morgan": "^1.10.0",
-    "semver": "^7.7.1",
-    "simple-update-notifier": "^2.0.0"
+    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+    "start:backend": "cd backend && npm run dev",
+    "start:frontend": "cd frontend && npm start",
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.20",
-    "nodemon": "^3.1.9",
-    "postcss": "^8.5.3",
-    "tailwindcss": "^4.0.9"
+    "concurrently": "^8.2.2"
   },
-  "engines": {
-    "node": ">=14.0.0"
-  },
-  "author": "",
-  "license": "ISC"
+  "dependencies": {
+    "full-stack-todolist": "file:"
+  }
 }
