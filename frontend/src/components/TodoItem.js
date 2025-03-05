@@ -1,38 +1,41 @@
 import React from 'react';
-import axios from 'axios';
+import { FaTrash, FaCheck, FaTimes } from 'react-icons/fa';
 
-const TodoItem = ({ todo, removeTodo, updateTodo }) => {
-  const handleDelete = async () => {
-    try {
-      await axios.delete(`/api/todos/${todo._id}`);
-      removeTodo(todo._id); // update local state
-    } catch (err) {
-      console.error('Error deleting todo:', err);
-    }
-  };
-
-  const handleToggleComplete = async () => {
-    try {
-      const updatedTodo = { ...todo, completed: !todo.completed }; // Toggle completed status
-      const res = await axios.patch(`/api/todos/${todo._id}`, updatedTodo);
-      updateTodo(res.data); // update local state with the updated todo
-    } catch (err) {
-      console.error('Error updating todo:', err);
-    }
-  };
-
+const TodoItem = ({ todo, toggleComplete, deleteTodo, ...props }) => {
   return (
-    <div className="todo-item" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-      <input
-        type="checkbox"
-        checked={todo.completed}
-        onChange={handleToggleComplete}
-      />
-      <span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
-        {todo.text}
-      </span>
-      <button onClick={handleDelete}>Delete</button>
-    </div>
+    <li
+      className="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200"
+      {...props}
+    >
+      <div className="flex items-center space-x-3">
+        <button
+          onClick={() => toggleComplete(todo._id, todo.completed)}
+          className={`p-2 rounded-full transition-colors duration-200 ${
+            todo.completed
+              ? 'bg-green-100 text-green-600 hover:bg-green-200'
+              : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+          }`}
+          data-testid={`toggle-${todo._id}`}
+        >
+          {todo.completed ? <FaCheck /> : <FaTimes />}
+        </button>
+        <span
+          className={`text-lg ${
+            todo.completed ? 'text-gray-400 line-through' : 'text-gray-700'
+          }`}
+          data-testid={`todo-title-${todo._id}`}
+        >
+          {todo.title}
+        </span>
+      </div>
+      <button
+        onClick={() => deleteTodo(todo._id)}
+        className="p-2 text-red-500 hover:bg-red-50 rounded-full transition-colors duration-200"
+        data-testid={`delete-${todo._id}`}
+      >
+        <FaTrash />
+      </button>
+    </li>
   );
 };
 

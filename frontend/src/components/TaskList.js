@@ -1,32 +1,29 @@
 import React from 'react';
+import { FaTrash, FaCheck, FaTimes } from 'react-icons/fa';
+import TodoItem from './TodoItem';
 
-function TaskList({ todos, toggleComplete, deleteTodo }) {
+const TaskList = ({ todos, toggleComplete, deleteTodo }) => {
+  if (!todos.length) {
+    return (
+      <div className="text-center text-gray-500 py-4">
+        No tasks yet. Add one to get started!
+      </div>
+    );
+  }
+
   return (
-    <div>
-      <h2>Task List</h2>
-      {todos.length === 0 ? (
-        <p>No tasks available. Add some!</p>
-      ) : (
-        <ul>
-          {todos.map(todo => (
-            <li key={todo._id} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <span
-                onClick={() => toggleComplete(todo._id, todo.completed)}
-                style={{
-                  textDecoration: todo.completed ? 'line-through' : 'none',
-                  cursor: 'pointer',
-                  flexGrow: 1
-                }}
-              >
-                {todo.title}
-              </span>
-              <button onClick={() => deleteTodo(todo._id)}>Delete</button>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+    <ul className="space-y-3">
+      {todos.map((todo) => (
+        <TodoItem
+          key={todo._id}
+          todo={todo}
+          toggleComplete={toggleComplete}
+          deleteTodo={deleteTodo}
+          data-testid={`todo-item-${todo._id}`}
+        />
+      ))}
+    </ul>
   );
-}
+};
 
 export default TaskList;
