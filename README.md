@@ -72,7 +72,7 @@ To run this project locally, follow the steps below.
 First, clone this repository to your local machine:
 
 ```bash
-git clone https://github.com/yourusername/full-stack-ToDoList-Hunter.git
+git clone https://github.com/StrayDogSyn/full-stack-ToDoList-Hunter.git
 ```
 
 ### 2. Install dependencies
