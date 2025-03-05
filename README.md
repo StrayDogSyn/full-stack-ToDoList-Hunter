@@ -1,71 +1,120 @@
-# Full Stack Todo List Application
+# StrayDog Todo List Application
 
-A modern full-stack todo list application built with React and Node.js.
+A modern, responsive todo list application with a black and gold theme.
 
 ## Project Structure
-
 ```
-full-stack-todolist/
-├── backend/                 # Backend Node.js/Express application
-│   ├── src/                # Source code
-│   │   └── server.js       # Main server file
-│   ├── models/             # MongoDB models
-│   └── package.json        # Backend dependencies
-├── frontend/               # Frontend React application
-│   ├── src/               # Source code
-│   ├── public/            # Static files
-│   └── package.json       # Frontend dependencies
-└── package.json           # Root package.json for managing both applications
+├── backend/
+│   ├── src/
+│   │   ├── config/
+│   │   │   └── db.js
+│   │   ├── controllers/
+│   │   │   └── taskController.js
+│   │   ├── models/
+│   │   │   └── Task.js
+│   │   ├── routes/
+│   │   │   └── api.js
+│   │   ├── utils/
+│   │   │   └── logger.js
+│   │   └── server.js
+│   ├── .env
+│   └── package.json
+│
+├── frontend/
+│   ├── src/
+│   │   ├── assets/
+│   │   │   └── strayDog.png
+│   │   ├── components/
+│   │   │   ├── Header/
+│   │   │   │   ├── Header.js
+│   │   │   │   └── Header.css
+│   │   │   ├── Footer/
+│   │   │   │   ├── Footer.js
+│   │   │   │   └── Footer.css
+│   │   │   ├── TaskForm/
+│   │   │   │   ├── TaskForm.js
+│   │   │   │   └── TaskForm.css
+│   │   │   └── TaskFilters/
+│   │   │       ├── TaskFilters.js
+│   │   │       └── TaskFilters.css
+│   │   ├── styles/
+│   │   │   ├── index.css
+│   │   │   └── variables.css
+│   │   ├── utils/
+│   │   │   └── api.js
+│   │   ├── App.js
+│   │   └── index.js
+│   ├── .env
+│   └── package.json
+│
+├── .gitignore
+└── README.md
 ```
 
-## Prerequisites
-
-- Node.js (v14 or higher)
-- MongoDB (running locally or a remote instance)
-- npm or yarn
+## Features
+- Modern black and gold theme
+- Responsive design
+- User name persistence
+- Task filtering and sorting
+- Priority levels
+- Categories
+- Due dates
 
 ## Setup Instructions
 
-1. Clone the repository:
-   ```bash
-   git clone <repository-url>
-   cd full-stack-todolist
-   ```
+### Backend
+1. Navigate to the backend directory:
+```bash
+cd backend
+```
 
-2. Install dependencies for all parts:
-   ```bash
-   npm run install:all
-   ```
+2. Install dependencies:
+```bash
+npm install
+```
 
-3. Start the development servers:
-   ```bash
-   npm start
-   ```
+3. Create a .env file with your MongoDB connection string:
+```
+MONGODB_URI=your_mongodb_uri
+PORT=5001
+```
 
-This will start both the backend and frontend servers concurrently:
-- Backend will run on http://localhost:5000
-- Frontend will run on http://localhost:3000
+4. Start the server:
+```bash
+npm run dev
+```
 
-## Development
+### Frontend
+1. Navigate to the frontend directory:
+```bash
+cd frontend
+```
 
-- Backend API endpoints:
-  - GET /tasks - Get all tasks
-  - POST /tasks - Create a new task
-  - PUT /tasks/:id - Update a task
-  - DELETE /tasks/:id - Delete a task
+2. Install dependencies:
+```bash
+npm install
+```
 
-- Frontend development:
-  - The React application is set up with Create React App
-  - Hot reloading is enabled for both frontend and backend
+3. Create a .env file:
+```
+REACT_APP_API_URL=http://localhost:5001
+```
 
-## Contributing
+4. Start the development server:
+```bash
+npm start
+```
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+## Technologies Used
+- Frontend:
+  - React
+  - Tailwind CSS
+  - Axios
+- Backend:
+  - Node.js
+  - Express
+  - MongoDB
+  - Mongoose
 
 ## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
+© 2025 StrayDog Syndications LLC. All rights reserved.
