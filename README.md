@@ -31,6 +31,12 @@ A sophisticated, full-stack todo list application featuring a stunning black and
   - Loading states and animations
   - Error handling with visual feedback
 
+## 🚀 Live Demo
+
+[View Live Demo](https://straydogtodo.netlify.app)
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/your-site-id/deploy-status)](https://app.netlify.com/sites/straydogtodo/deploys)
+
 ## 📁 Project Structure
 
 ```text
@@ -75,10 +81,6 @@ A sophisticated, full-stack todo list application featuring a stunning black and
 └── README.md
 ```
 
-## 🚀 Live Demo
-
-[View Live Demo](https://straydogtodo.netlify.app) *(Coming Soon)*
-
 ## 🛠️ Technologies Used
 
 ### Frontend
@@ -109,7 +111,7 @@ A sophisticated, full-stack todo list application featuring a stunning black and
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/full-stack-ToDoList-Hunter.git
+git clone https://github.com/StrayDogSyn/full-stack-ToDoList-Hunter.git
 cd full-stack-ToDoList-Hunter
 ```
 
@@ -187,6 +189,16 @@ npm start
 - [ ] Dark/Light theme toggle
 - [ ] Task analytics and insights
 - [ ] Mobile app version
+
+## 🔧 Recent Updates
+
+- ✅ Improved project structure with separate frontend and backend directories
+- ✅ Enhanced error handling and logging
+- ✅ Added Netlify deployment configuration
+- ✅ Implemented responsive design
+- ✅ Added comprehensive documentation
+- ✅ Fixed markdown linting issues
+- ✅ Updated contact information
 
 ## 🤝 Contributing
 
