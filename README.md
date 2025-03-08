@@ -190,4 +190,4 @@ Copyright © 2024 StrayDog. All rights reserved.
 
 - LinkedIn: [Eric Petross](https://www.linkedin.com/in/eric-petross)
 - GitHub: [StrayDogSyn](https://github.com/StrayDogSyn)
-- Email: eric.petross@gmail.com
+- Email: StrayDogSyndicationsLLC@gmail.com
