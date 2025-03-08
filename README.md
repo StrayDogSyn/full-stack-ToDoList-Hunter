@@ -82,12 +82,14 @@ A sophisticated, full-stack todo list application featuring a stunning black and
 ## 🛠️ Technologies Used
 
 ### Frontend
+
 - **React** - UI library
 - **Tailwind CSS** - Styling and animations
 - **Axios** - API requests
 - **React Icons** - Icon library
 
 ### Backend
+
 - **Node.js** - Runtime environment
 - **Express** - Web framework
 - **MongoDB** - Database
@@ -97,63 +99,77 @@ A sophisticated, full-stack todo list application featuring a stunning black and
 ## 📦 Installation & Setup
 
 ### Prerequisites
+
 - Node.js (v14 or higher)
 - MongoDB (v4.4 or higher)
 - npm or yarn package manager
 
 ### Backend Setup
+
 1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/full-stack-ToDoList-Hunter.git
-   cd full-stack-ToDoList-Hunter
-   ```
+
+```bash
+git clone https://github.com/yourusername/full-stack-ToDoList-Hunter.git
+cd full-stack-ToDoList-Hunter
+```
 
 2. Install backend dependencies:
-   ```bash
-   cd backend
-   npm install
-   ```
+
+```bash
+cd backend
+npm install
+```
 
 3. Create a .env file:
-   ```env
-   MONGODB_URI=your_mongodb_uri
-   PORT=5001
-   ```
+
+```env
+MONGODB_URI=your_mongodb_uri
+PORT=5001
+```
 
 4. Start the server:
-   ```bash
-   npm run dev
-   ```
+
+```bash
+npm run dev
+```
 
 ### Frontend Setup
+
 1. Install frontend dependencies:
-   ```bash
-   cd frontend
-   npm install
-   ```
+
+```bash
+cd frontend
+npm install
+```
 
 2. Create a .env file:
-   ```env
-   REACT_APP_API_URL=http://localhost:5001
-   ```
+
+```env
+REACT_APP_API_URL=http://localhost:5001
+```
 
 3. Start the development server:
-   ```bash
-   npm start
-   ```
+
+```bash
+npm start
+```
 
 ## 📱 Screenshots
 
 ### Application Overview
+
 ![Application Overview](./frontend/src/assets/screenshots/Screenshot%20(38).png)
 
 ### Task Management Interface
+
 ![Task Management](./frontend/src/assets/screenshots/Screenshot%20(39).png)
 
 ### Task Creation Form
+
 ![Task Creation](./frontend/src/assets/screenshots/Screenshot%20(40).png)
 
 ### Task Filtering and Sorting
+
 ![Task Filtering](./frontend/src/assets/screenshots/Screenshot%20(41).png)
 
 ## 🔄 API Endpoints
@@ -190,4 +206,4 @@ Copyright © 2024 StrayDog. All rights reserved.
 
 - LinkedIn: [Eric Petross](https://www.linkedin.com/in/eric-petross)
 - GitHub: [StrayDogSyn](https://github.com/StrayDogSyn)
-- Email: StrayDogSyndicationsLLC@gmail.com
+- Email: eric.petross@gmail.com
