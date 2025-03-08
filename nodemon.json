@@ -1,0 +1,12 @@
+{
+  "ignore": [
+    "*.test.js",
+    "node_modules/*"
+  ],
+  "ext": "js,json",
+  "exec": "node server.js",
+  "env": {
+    "PORT": 5000
+  },
+  "legacy-watch": true
+}
