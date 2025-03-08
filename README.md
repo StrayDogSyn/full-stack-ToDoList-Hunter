@@ -144,11 +144,17 @@ A sophisticated, full-stack todo list application featuring a stunning black and
 
 ## 📱 Screenshots
 
-### Desktop View
-![Desktop View](./frontend/src/assets/desktop-view.png)
+### Application Overview
+![Application Overview](./frontend/src/assets/screenshots/Screenshot%20(38).png)
 
-### Mobile View
-![Mobile View](./frontend/src/assets/mobile-view.png)
+### Task Management Interface
+![Task Management](./frontend/src/assets/screenshots/Screenshot%20(39).png)
+
+### Task Creation Form
+![Task Creation](./frontend/src/assets/screenshots/Screenshot%20(40).png)
+
+### Task Filtering and Sorting
+![Task Filtering](./frontend/src/assets/screenshots/Screenshot%20(41).png)
 
 ## 🔄 API Endpoints
 
