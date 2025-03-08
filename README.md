@@ -31,6 +31,50 @@ A sophisticated, full-stack todo list application featuring a stunning black and
   - Loading states and animations
   - Error handling with visual feedback
 
+## 📁 Project Structure
+
+```text
+├── backend/
+│   ├── src/
+│   │   ├── config/
+│   │   │   └── db.js
+│   │   ├── controllers/
+│   │   │   └── taskController.js
+│   │   ├── models/
+│   │   │   └── Task.js
+│   │   ├── routes/
+│   │   │   └── api.js
+│   │   ├── utils/
+│   │   │   └── logger.js
+│   │   └── server.js
+│   ├── .env
+│   └── package.json
+│
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── Header/
+│   │   │   │   ├── Header.js
+│   │   │   │   └── Header.css
+│   │   │   ├── Footer.js
+│   │   │   ├── TaskForm.js
+│   │   │   └── TaskFilters.js
+│   │   ├── styles/
+│   │   │   └── index.css
+│   │   ├── utils/
+│   │   │   └── api.js
+│   │   ├── App.js
+│   │   └── index.js
+│   ├── public/
+│   │   ├── index.html
+│   │   └── manifest.json
+│   ├── .env
+│   └── package.json
+│
+├── .gitignore
+└── README.md
+```
+
 ## 🚀 Live Demo
 
 [View Live Demo](https://straydogtodo.netlify.app) *(Coming Soon)*
@@ -54,8 +98,8 @@ A sophisticated, full-stack todo list application featuring a stunning black and
 
 ### Prerequisites
 - Node.js (v14 or higher)
-- MongoDB
-- Git
+- MongoDB (v4.4 or higher)
+- npm or yarn package manager
 
 ### Backend Setup
 1. Clone the repository:
@@ -106,6 +150,14 @@ A sophisticated, full-stack todo list application featuring a stunning black and
 ### Mobile View
 ![Mobile View](./frontend/src/assets/mobile-view.png)
 
+## 🔄 API Endpoints
+
+- `GET /api/tasks` - Get all tasks
+- `POST /api/tasks` - Create a new task
+- `PUT /api/tasks/:id` - Update a task
+- `DELETE /api/tasks/:id` - Delete a task
+- `GET /api/tasks/filter` - Get filtered tasks
+
 ## 🎯 Future Enhancements
 
 - [ ] User authentication and profiles
@@ -120,7 +172,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📄 License
 
-© 2025 StrayDog Syndications LLC. All rights reserved.
+Copyright © 2024 StrayDog. All rights reserved.
 
 ## 🙏 Acknowledgments
 
