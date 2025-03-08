@@ -188,6 +188,6 @@ Copyright © 2024 StrayDog. All rights reserved.
 
 ## 📞 Contact
 
-- LinkedIn: [Your LinkedIn Profile](https://linkedin.com/in/yourusername)
-- GitHub: [Your GitHub Profile](https://github.com/yourusername)
-- Email: your.email@example.com
+- LinkedIn: [Eric Petross](https://www.linkedin.com/in/eric-petross)
+- GitHub: [StrayDogSyn](https://github.com/StrayDogSyn)
+- Email: eric.petross@gmail.com
