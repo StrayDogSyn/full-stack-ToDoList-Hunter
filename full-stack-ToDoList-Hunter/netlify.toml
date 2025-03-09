@@ -1,0 +1,24 @@
+[build]
+  base = "frontend"
+  command = "npm run build:netlify"
+  publish = "build"
+
+[build.environment]
+  NODE_VERSION = "18.19.0"
+  NPM_VERSION = "10.2.3"
+  NETLIFY_USE_YARN = "false"
+  NETLIFY_RESTORE_CACHE = "true"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Content-Security-Policy = "default-src 'self' https://full-stack-todolist-hunter.onrender.com; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval';" 
