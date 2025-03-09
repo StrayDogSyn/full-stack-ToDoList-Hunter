@@ -4,21 +4,25 @@ import http from 'http';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import Task from '../models/task.model.js';
+import dotenv from 'dotenv';
+
+// Load environment variables
+dotenv.config();
 
 const app = express();
-const PORT = 5001; // Fixed port
+const PORT = process.env.PORT || 5001;
 
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
 
 // Add a basic health check route
-app.get('/health', (req, res) => {
+app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'Server is running' });
 });
 
 // Route to get all tasks with filtering and sorting
-app.get('/tasks', async (req, res) => {
+app.get('/api/tasks', async (req, res) => {
   try {
     const {
       search,
@@ -60,7 +64,7 @@ app.get('/tasks', async (req, res) => {
 });
 
 // Route to get task categories
-app.get('/categories', async (req, res) => {
+app.get('/api/categories', async (req, res) => {
   try {
     const categories = await Task.distinct('category');
     console.log('Available categories:', categories);
@@ -72,7 +76,7 @@ app.get('/categories', async (req, res) => {
 });
 
 // Route to create a new task
-app.post('/tasks', async (req, res) => {
+app.post('/api/tasks', async (req, res) => {
   console.log('Creating new task with data:', req.body);
   const { title, description, category, priority, dueDate } = req.body;
   
@@ -100,7 +104,7 @@ app.post('/tasks', async (req, res) => {
 });
 
 // Route to update a task
-app.put('/tasks/:id', async (req, res) => {
+app.put('/api/tasks/:id', async (req, res) => {
   const { id } = req.params;
   console.log('Updating task:', id, 'with data:', req.body);
   
@@ -129,7 +133,7 @@ app.put('/tasks/:id', async (req, res) => {
 });
 
 // Route to delete a task
-app.delete('/tasks/:id', async (req, res) => {
+app.delete('/api/tasks/:id', async (req, res) => {
   const { id } = req.params;
   console.log('Deleting task:', id);
 
@@ -148,7 +152,7 @@ app.delete('/tasks/:id', async (req, res) => {
 });
 
 // MongoDB connection
-mongoose.connect('mongodb://localhost:27017/todolist')
+mongoose.connect(process.env.MONGODB_URI)
   .then(() => {
     console.log('Connected to MongoDB');
     // Create text index if it doesn't exist
@@ -165,5 +169,5 @@ const server = http.createServer(app);
 
 server.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
-  console.log('Health check available at http://localhost:5001/health');
+  console.log(`Health check available at http://localhost:${PORT}/api/health`);
 }); 
