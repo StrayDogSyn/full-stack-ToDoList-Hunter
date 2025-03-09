@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 
-export const logRequest = (req: Request, res: Response, next: NextFunction): void => {
+export const logRequest = (_req: Request, _res: Response, next: NextFunction): void => {
   const timestamp = new Date().toISOString();
-  const { method, url, body, query } = req;
+  const { method, url, body, query } = _req;
   
   console.log(`[${timestamp}] ${method} ${url}`);
   if (Object.keys(body).length > 0) {
@@ -21,4 +21,4 @@ export const logError = (error: Error, context?: string): void => {
   if (error.stack) {
     console.error('Stack:', error.stack);
   }
-}; 
+};
