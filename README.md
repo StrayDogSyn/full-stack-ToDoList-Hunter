@@ -82,12 +82,14 @@ A sophisticated, full-stack todo list application featuring a stunning black and
 ## 🛠️ Technologies Used
 
 ### Frontend
+
 - **React** - UI library
 - **Tailwind CSS** - Styling and animations
 - **Axios** - API requests
 - **React Icons** - Icon library
 
 ### Backend
+
 - **Node.js** - Runtime environment
 - **Express** - Web framework
 - **MongoDB** - Database
@@ -97,64 +99,84 @@ A sophisticated, full-stack todo list application featuring a stunning black and
 ## 📦 Installation & Setup
 
 ### Prerequisites
+
 - Node.js (v14 or higher)
 - MongoDB (v4.4 or higher)
 - npm or yarn package manager
 
 ### Backend Setup
+
 1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/full-stack-ToDoList-Hunter.git
-   cd full-stack-ToDoList-Hunter
-   ```
 
-2. Install backend dependencies:
-   ```bash
-   cd backend
-   npm install
-   ```
+```bash
+git clone https://github.com/yourusername/full-stack-ToDoList-Hunter.git
+cd full-stack-ToDoList-Hunter
+```
 
-3. Create a .env file:
-   ```env
-   MONGODB_URI=your_mongodb_uri
-   PORT=5001
-   ```
+1. Install backend dependencies:
 
-4. Start the server:
-   ```bash
-   npm run dev
-   ```
+```bash
+cd backend
+npm install
+```
+
+1. Create a .env file:
+
+```env
+MONGODB_URI=your_mongodb_uri
+PORT=5001
+```
+
+1. Start the server:
+
+```bash
+npm run dev
+```
 
 ### Frontend Setup
+
 1. Install frontend dependencies:
-   ```bash
-   cd frontend
-   npm install
-   ```
 
-2. Create a .env file:
-   ```env
-   REACT_APP_API_URL=http://localhost:5001
-   ```
+```bash
+cd frontend
+npm install
+```
 
-3. Start the development server:
-   ```bash
-   npm start
-   ```
+1. Create a .env file:
+
+```env
+REACT_APP_API_URL=http://localhost:5001
+```
+
+1. Configure Tailwind CSS:
+
+```bash
+npx tailwindcss init
+```
+
+1. Start the development server:
+
+```bash
+npm start
+```
 
 ## 📱 Screenshots
 
 ### Application Overview
-![Application Overview](./frontend/src/assets/screenshots/Screenshot%20(38).png)
+
+![Application Overview](./frontend/src/assets/screenshots/app-overview.png)
 
 ### Task Management Interface
-![Task Management](./frontend/src/assets/screenshots/Screenshot%20(39).png)
+
+![Task Management](./frontend/src/assets/screenshots/task-management.png)
 
 ### Task Creation Form
-![Task Creation](./frontend/src/assets/screenshots/Screenshot%20(40).png)
+
+![Task Creation](./frontend/src/assets/screenshots/task-creation.png)
 
 ### Task Filtering and Sorting
-![Task Filtering](./frontend/src/assets/screenshots/Screenshot%20(41).png)
+
+![Task Filtering](./frontend/src/assets/screenshots/task-filtering.png)
 
 ## 🔄 API Endpoints
 
@@ -190,4 +212,28 @@ Copyright © 2024 StrayDog. All rights reserved.
 
 - LinkedIn: [Eric Petross](https://www.linkedin.com/in/eric-petross)
 - GitHub: [StrayDogSyn](https://github.com/StrayDogSyn)
-- Email: StrayDogSyndicationsLLC@gmail.com
+- Email: [StrayDogSyndicationsLLC@gmail.com](mailto:StrayDogSyndicationsLLC@gmail.com)
+
+## 🔧 Troubleshooting
+
+### MongoDB Issues
+
+If MongoDB fails to start with a "lock file" error:
+
+1. Stop all MongoDB processes:
+
+```bash
+taskkill /F /IM mongod.exe
+```
+
+1. Remove the lock file:
+
+```bash
+Remove-Item -Path "C:\data\db\mongod.lock" -Force
+```
+
+1. Start MongoDB:
+
+```bash
+Start-Process mongod -ArgumentList "--dbpath=`"C:\data\db`"" -WindowStyle Normal
+```

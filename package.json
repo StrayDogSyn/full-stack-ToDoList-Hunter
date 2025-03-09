@@ -1,14 +1,23 @@
 {
-  "name": "full-stack-todolist",
+  "name": "todo-list-app",
   "version": "1.0.0",
-  "description": "Full Stack Todo List Application",
+  "description": "Full-stack Todo List application",
+  "private": true,
   "scripts": {
-    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
-    "start:backend": "cd backend && npm run dev",
+    "install:all": "cd frontend && npm install && cd ../backend && npm install",
     "start:frontend": "cd frontend && npm start",
-    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install"
+    "start:backend": "cd backend && npm run dev",
+    "build:frontend": "cd frontend && npm run build",
+    "build:backend": "cd backend && npm run build",
+    "test:frontend": "cd frontend && npm test",
+    "test:backend": "cd backend && npm test",
+    "lint:frontend": "cd frontend && npm run lint",
+    "lint:backend": "cd backend && npm run lint",
+    "type-check:frontend": "cd frontend && npm run type-check",
+    "type-check:backend": "cd backend && npm run type-check"
   },
-  "devDependencies": {
-    "concurrently": "^8.2.2"
-  }
-}
+  "workspaces": [
+    "frontend",
+    "backend"
+  ]
+} 
