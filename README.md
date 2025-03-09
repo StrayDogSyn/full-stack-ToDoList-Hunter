@@ -4,6 +4,22 @@ A sophisticated, full-stack todo list application featuring a stunning black and
 
 ![StrayDog Todo List Banner](./frontend/src/assets/app-preview.png)
 
+## 📋 Table of Contents
+
+- [Key Features](#-key-features)
+- [Project Structure](#-project-structure)
+- [Live Demo](#-live-demo)
+- [Technologies Used](#️-technologies-used)
+- [Installation & Setup](#-installation--setup)
+- [Screenshots](#-screenshots)
+- [API Endpoints](#-api-endpoints)
+- [Future Enhancements](#-future-enhancements)
+- [Contributing](#-contributing)
+- [License](#-license)
+- [Acknowledgments](#-acknowledgments)
+- [Contact](#-contact)
+- [Troubleshooting](#-troubleshooting)
+
 ## 🌟 Key Features
 
 - **Elegant UI Design**
@@ -41,7 +57,7 @@ A sophisticated, full-stack todo list application featuring a stunning black and
 │   │   ├── controllers/
 │   │   │   └── taskController.ts
 │   │   ├── models/
-│   │   │   └── Task.ts
+│   │   │   └── task.ts
 │   │   ├── routes/
 │   │   │   └── api.ts
 │   │   ├── types/
@@ -62,22 +78,36 @@ A sophisticated, full-stack todo list application featuring a stunning black and
 │   │   │   │   └── TaskList.tsx
 │   │   │   ├── Filter/
 │   │   │   │   └── FilterBar.tsx
-│   │   │   └── Layout/
-│   │   │       └── Footer.tsx
+│   │   │   ├── Layout/
+│   │   │   │   └── Footer.tsx
+│   │   │   └── Header/
+│   │   │       └── Header.tsx
 │   │   ├── hooks/
 │   │   │   ├── useDebounce.ts
 │   │   │   └── useLocalStorage.ts
+│   │   ├── services/
+│   │   │   └── taskService.ts
 │   │   ├── styles/
+│   │   │   ├── components/
+│   │   │   │   ├── Task.css
+│   │   │   │   ├── Filter.css
+│   │   │   │   ├── Layout.css
+│   │   │   │   └── Header.css
 │   │   │   └── index.css
 │   │   ├── utils/
 │   │   │   └── api.ts
 │   │   ├── App.tsx
-│   │   └── index.tsx
+│   │   ├── index.tsx
+│   │   ├── setupTests.ts
+│   │   └── tests/
+│   │       └── setupTests.ts
 │   ├── public/
 │   │   ├── index.html
 │   │   └── manifest.json
 │   ├── .env
 │   ├── tsconfig.json
+│   ├── tailwind.config.js
+│   ├── postcss.config.js
 │   └── package.json
 │
 ├── .gitignore
@@ -86,7 +116,7 @@ A sophisticated, full-stack todo list application featuring a stunning black and
 
 ## 🚀 Live Demo
 
-[View Live Demo](https://straydogtodo.netlify.app) *(Coming Soon)*
+[View Live Demo](https://straydogtodo.netlify.app)
 
 ## 🛠️ Technologies Used
 
@@ -157,12 +187,6 @@ npm install
 
 ```env
 REACT_APP_API_URL=http://localhost:5001
-```
-
-1. Configure Tailwind CSS:
-
-```bash
-npx tailwindcss init
 ```
 
 1. Start the development server:
