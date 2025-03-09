@@ -37,38 +37,47 @@ A sophisticated, full-stack todo list application featuring a stunning black and
 ├── backend/
 │   ├── src/
 │   │   ├── config/
-│   │   │   └── db.js
+│   │   │   └── db.ts
 │   │   ├── controllers/
-│   │   │   └── taskController.js
+│   │   │   └── taskController.ts
 │   │   ├── models/
-│   │   │   └── Task.js
+│   │   │   └── Task.ts
 │   │   ├── routes/
-│   │   │   └── api.js
+│   │   │   └── api.ts
+│   │   ├── types/
+│   │   │   └── task.ts
 │   │   ├── utils/
-│   │   │   └── logger.js
-│   │   └── server.js
+│   │   │   └── logger.ts
+│   │   └── server.ts
 │   ├── .env
+│   ├── tsconfig.json
 │   └── package.json
 │
 ├── frontend/
 │   ├── src/
 │   │   ├── components/
-│   │   │   ├── Header/
-│   │   │   │   ├── Header.js
-│   │   │   │   └── Header.css
-│   │   │   ├── Footer.js
-│   │   │   ├── TaskForm.js
-│   │   │   └── TaskFilters.js
+│   │   │   ├── Task/
+│   │   │   │   ├── TaskForm.tsx
+│   │   │   │   ├── TaskItem.tsx
+│   │   │   │   └── TaskList.tsx
+│   │   │   ├── Filter/
+│   │   │   │   └── FilterBar.tsx
+│   │   │   └── Layout/
+│   │   │       └── Footer.tsx
+│   │   ├── hooks/
+│   │   │   ├── useDebounce.ts
+│   │   │   └── useLocalStorage.ts
 │   │   ├── styles/
 │   │   │   └── index.css
 │   │   ├── utils/
-│   │   │   └── api.js
-│   │   ├── App.js
-│   │   └── index.js
+│   │   │   └── api.ts
+│   │   ├── App.tsx
+│   │   └── index.tsx
 │   ├── public/
 │   │   ├── index.html
 │   │   └── manifest.json
 │   ├── .env
+│   ├── tsconfig.json
 │   └── package.json
 │
 ├── .gitignore
@@ -84,6 +93,7 @@ A sophisticated, full-stack todo list application featuring a stunning black and
 ### Frontend
 
 - **React** - UI library
+- **TypeScript** - Type-safe JavaScript
 - **Tailwind CSS** - Styling and animations
 - **Axios** - API requests
 - **React Icons** - Icon library
@@ -92,6 +102,7 @@ A sophisticated, full-stack todo list application featuring a stunning black and
 
 - **Node.js** - Runtime environment
 - **Express** - Web framework
+- **TypeScript** - Type-safe JavaScript
 - **MongoDB** - Database
 - **Mongoose** - ODM
 - **JWT** - Authentication
