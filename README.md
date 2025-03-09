@@ -18,7 +18,6 @@ A sophisticated, full-stack todo list application featuring a stunning black and
 - [License](#-license)
 - [Acknowledgments](#-acknowledgments)
 - [Contact](#-contact)
-- [Troubleshooting](#-troubleshooting)
 
 ## 🌟 Key Features
 
@@ -148,10 +147,9 @@ A sophisticated, full-stack todo list application featuring a stunning black and
 ### Backend Setup
 
 1. Clone the repository:
-<<<<<<< HEAD
 
 ```bash
-git clone https://github.com/StrayDogSyn/full-stack-ToDoList-Hunter.git
+git clone https://github.com/yourusername/full-stack-ToDoList-Hunter.git
 cd full-stack-ToDoList-Hunter
 ```
 
@@ -170,29 +168,6 @@ PORT=5001
 ```
 
 1. Start the server:
-=======
-
-```bash
-git clone https://github.com/yourusername/full-stack-ToDoList-Hunter.git
-cd full-stack-ToDoList-Hunter
-```
-
-2. Install backend dependencies:
-
-```bash
-cd backend
-npm install
-```
-
-3. Create a .env file:
-
-```env
-MONGODB_URI=your_mongodb_uri
-PORT=5001
-```
-
-4. Start the server:
->>>>>>> 0b895f50c063a6e6be40d2bcc0fdc51deca6f148
 
 ```bash
 npm run dev
@@ -201,7 +176,6 @@ npm run dev
 ### Frontend Setup
 
 1. Install frontend dependencies:
-<<<<<<< HEAD
 
 ```bash
 cd frontend
@@ -215,21 +189,6 @@ REACT_APP_API_URL=http://localhost:5001
 ```
 
 1. Start the development server:
-=======
-
-```bash
-cd frontend
-npm install
-```
-
-2. Create a .env file:
-
-```env
-REACT_APP_API_URL=http://localhost:5001
-```
-
-3. Start the development server:
->>>>>>> 0b895f50c063a6e6be40d2bcc0fdc51deca6f148
 
 ```bash
 npm start
@@ -239,21 +198,6 @@ npm start
 
 ### Application Overview
 
-<<<<<<< HEAD
-![Application Overview](./frontend/src/assets/screenshots/app-overview.png)
-
-### Task Management Interface
-
-![Task Management](./frontend/src/assets/screenshots/task-management.png)
-
-### Task Creation Form
-
-![Task Creation](./frontend/src/assets/screenshots/task-creation.png)
-
-### Task Filtering and Sorting
-
-![Task Filtering](./frontend/src/assets/screenshots/task-filtering.png)
-=======
 ![Application Overview](./frontend/src/assets/screenshots/Screenshot%20(38).png)
 
 ### Task Management Interface
@@ -267,7 +211,6 @@ npm start
 ### Task Filtering and Sorting
 
 ![Task Filtering](./frontend/src/assets/screenshots/Screenshot%20(41).png)
->>>>>>> 0b895f50c063a6e6be40d2bcc0fdc51deca6f148
 
 ## 🔄 API Endpoints
 
@@ -303,32 +246,4 @@ Copyright © 2024 StrayDog. All rights reserved.
 
 - LinkedIn: [Eric Petross](https://www.linkedin.com/in/eric-petross)
 - GitHub: [StrayDogSyn](https://github.com/StrayDogSyn)
-<<<<<<< HEAD
-- Email: [StrayDogSyndicationsLLC@gmail.com](mailto:StrayDogSyndicationsLLC@gmail.com)
-
-## 🔧 Troubleshooting
-
-### MongoDB Issues
-
-If MongoDB fails to start with a "lock file" error:
-
-1. Stop all MongoDB processes:
-
-```bash
-taskkill /F /IM mongod.exe
-```
-
-1. Remove the lock file:
-
-```bash
-Remove-Item -Path "C:\data\db\mongod.lock" -Force
-```
-
-1. Start MongoDB:
-
-```bash
-Start-Process mongod -ArgumentList "--dbpath=`"C:\data\db`"" -WindowStyle Normal
-```
-=======
-- Email: eric.petross@gmail.com
->>>>>>> 0b895f50c063a6e6be40d2bcc0fdc51deca6f148
+- Email: <eric.petross@gmail.com>
