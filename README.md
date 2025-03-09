@@ -104,7 +104,7 @@ A sophisticated, full-stack todo list application featuring a stunning black and
 ### Backend Setup
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/full-stack-ToDoList-Hunter.git
+   git clone https://github.com/StrayDogSyn/full-stack-ToDoList-Hunter.git
    cd full-stack-ToDoList-Hunter
    ```
 
