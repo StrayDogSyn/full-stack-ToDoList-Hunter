@@ -14,7 +14,7 @@ export const getAllTasks = async (req: Request, res: Response): Promise<void> =>
   }
 };
 
-export const createTask = async (req: Request<{}, {}, CreateTaskDTO>, res: Response): Promise<void> => {
+export const createTask = async (req: Request<object, object, CreateTaskDTO>, res: Response): Promise<void> => {
   try {
     const { title } = req.body;
     
@@ -32,7 +32,7 @@ export const createTask = async (req: Request<{}, {}, CreateTaskDTO>, res: Respo
 };
 
 export const updateTask = async (
-  req: Request<{ id: string }, {}, UpdateTaskDTO>,
+  req: Request<{ id: string }, object, UpdateTaskDTO>,
   res: Response
 ): Promise<void> => {
   try {
@@ -71,7 +71,7 @@ export const deleteTask = async (
   }
 };
 
-export const filterTasks = async (req: Request<{}, {}, {}, TaskFilters>, res: Response): Promise<void> => {
+export const filterTasks = async (req: Request<object, object, object, TaskFilters>, res: Response): Promise<void> => {
   try {
     const tasks = await TaskService.searchTasks(req.query);
     res.json(tasks);
@@ -79,4 +79,4 @@ export const filterTasks = async (req: Request<{}, {}, {}, TaskFilters>, res: Re
     logError(error as Error, 'filterTasks');
     res.status(400).json({ message: 'Error filtering tasks', error: (error as Error).message });
   }
-}; 
+};

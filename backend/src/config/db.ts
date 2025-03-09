@@ -27,4 +27,4 @@ export const closeDB = async (): Promise<void> => {
       console.error('An unknown error occurred while closing MongoDB connection');
     }
   }
-}; 
+};
