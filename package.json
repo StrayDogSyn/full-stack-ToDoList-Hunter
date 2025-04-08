@@ -19,5 +19,8 @@
   "workspaces": [
     "frontend",
     "backend"
-  ]
+  ],
+  "devDependencies": {
+    "source-map-loader": "^5.0.0"
+  }
 }

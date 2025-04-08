@@ -160,10 +160,10 @@ cd backend
 npm install
 ```
 
-1. Create a .env file:
+1. Create a .env file (replace `your_mongodb_uri` with your actual MongoDB URI):
 
 ```env
-MONGODB_URI=your_mongodb_uri
+MONGODB_URI=mongodb://<username>:<password>@<host>:<port>/<database>?retryWrites=true&w=majority
 PORT=5001
 ```
 
