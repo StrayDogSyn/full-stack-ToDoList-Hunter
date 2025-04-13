@@ -102,14 +102,17 @@ function App() {
 
   if (!serverConnected) {
     return (
-      <div className="min-h-screen bg-black text-gold flex flex-col items-center justify-center p-4">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Connection Error</h1>
-          <p className="text-red-500 mb-4">{error}</p>
+      <div className="min-h-screen bg-gradient-to-br from-primary-dark to-black flex items-center justify-center">
+        <div className="glassmorphism p-8 rounded-lg max-w-md w-full mx-4 animate-fade-in">
+          <h2 className="text-2xl font-semibold text-gradient-primary mb-4">Connection Error</h2>
+          <p className="text-neutral mb-6">Unable to connect to the server. Please check your connection and try again.</p>
           <button
             onClick={checkServerConnection}
-            className="bg-gold text-black px-4 py-2 rounded hover:bg-gold-dark transition-colors"
+            className="btn-primary w-full flex items-center justify-center gap-2 hover:shadow-glow transition-all"
           >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+            </svg>
             Retry Connection
           </button>
         </div>
@@ -118,71 +121,77 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-gold">
+    <div className="min-h-screen bg-gradient-to-br from-primary-dark via-black to-primary-dark">
       <Header />
       <main className="container mx-auto px-4 py-8">
-        <TaskForm onSubmit={handleTaskCreate} />
-        <TaskFilters
-          filters={filters}
-          categories={categories}
-          onChange={handleFilterChange}
-        />
-        {error && (
-          <div className="bg-red-900 text-white p-4 rounded mb-4">
-            {error}
+        <div className="max-w-4xl mx-auto space-y-8">
+          <div className="glassmorphism p-6 rounded-lg animate-fade-in">
+            <TaskForm onSubmit={handleTaskCreate} />
           </div>
-        )}
-        <div className="grid gap-4">
-          {tasks.map(task => (
-            <div
-              key={task._id}
-              className="bg-black border border-gold p-4 rounded shadow-lg hover:shadow-gold transition-shadow"
-            >
-              <div className="flex items-center justify-between">
-                <h3 className={`text-lg font-semibold ${task.completed ? 'line-through text-gray-400' : ''}`}>
-                  {task.title}
-                </h3>
-                <div className="flex gap-2">
+
+          <div className="glassmorphism p-6 rounded-lg animate-fade-in">
+            <TaskFilters
+              filters={filters}
+              categories={categories}
+              onChange={handleFilterChange}
+            />
+          </div>
+
+          {error && (
+            <div className="bg-red-900/20 border border-red-500/30 text-red-300 p-4 rounded-lg animate-fade-in">
+              {error}
+            </div>
+          )}
+
+          <div className="grid gap-4">
+            {tasks.map(task => (
+              <div
+                key={task._id}
+                className="glassmorphism p-6 rounded-lg hover:shadow-glow transition-all animate-slide-up"
+              >
+                <div className="flex items-center justify-between gap-4">
+                  <div className="flex-1">
+                    <h3 className="text-lg font-semibold text-gradient-accent mb-2">{task.title}</h3>
+                    <p className="text-neutral/80">{task.description}</p>
+                  </div>
+                  <div className="flex flex-col sm:flex-row items-end sm:items-center gap-2">
+                    {task.priority && (
+                      <span className={`px-3 py-1 rounded-full text-sm font-medium ${
+                        task.priority === 'High' ? 'bg-red-900/30 text-red-300 border border-red-500/30' :
+                        task.priority === 'Medium' ? 'bg-yellow-900/30 text-yellow-300 border border-yellow-500/30' :
+                        'bg-green-900/30 text-green-300 border border-green-500/30'
+                      }`}>
+                        {task.priority}
+                      </span>
+                    )}
+                    {task.dueDate && (
+                      <span className="bg-secondary/10 text-secondary-light px-3 py-1 rounded-full text-sm font-medium border border-secondary/30">
+                        Due: {new Date(task.dueDate).toLocaleDateString()}
+                      </span>
+                    )}
+                  </div>
+                </div>
+                <div className="flex items-center gap-3 mt-4 pt-4 border-t border-white/10">
                   <button
                     onClick={() => handleTaskUpdate(task._id, { completed: !task.completed })}
-                    className="text-gold hover:text-gold-dark"
+                    className={`flex items-center gap-2 px-4 py-2 rounded-md transition-all ${
+                      task.completed 
+                        ? 'bg-green-900/20 text-green-300 hover:bg-green-900/30' 
+                        : 'bg-secondary/10 text-secondary-light hover:bg-secondary/20'
+                    }`}
                   >
-                    {task.completed ? 'Undo' : 'Complete'}
+                    {task.completed ? 'Completed' : 'Mark Complete'}
                   </button>
                   <button
                     onClick={() => handleTaskDelete(task._id)}
-                    className="text-red-500 hover:text-red-600"
+                    className="px-4 py-2 rounded-md bg-red-900/20 text-red-300 hover:bg-red-900/30 transition-all"
                   >
                     Delete
                   </button>
                 </div>
               </div>
-              {task.description && (
-                <p className="mt-2 text-gray-300">{task.description}</p>
-              )}
-              <div className="mt-4 flex flex-wrap gap-2">
-                {task.category && (
-                  <span className="bg-gold/20 text-gold px-2 py-1 rounded text-sm">
-                    {task.category}
-                  </span>
-                )}
-                {task.priority && (
-                  <span className={`px-2 py-1 rounded text-sm ${
-                    task.priority === 'High' ? 'bg-red-900/50 text-red-300' :
-                    task.priority === 'Medium' ? 'bg-yellow-900/50 text-yellow-300' :
-                    'bg-green-900/50 text-green-300'
-                  }`}>
-                    {task.priority}
-                  </span>
-                )}
-                {task.dueDate && (
-                  <span className="bg-blue-900/50 text-blue-300 px-2 py-1 rounded text-sm">
-                    Due: {new Date(task.dueDate).toLocaleDateString()}
-                  </span>
-                )}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </main>
       <Footer />

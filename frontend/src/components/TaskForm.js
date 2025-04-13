@@ -37,28 +37,29 @@ function TaskForm({ onSubmit }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="card shimmer-border">
+    <form onSubmit={handleSubmit}>
+      <h2 className="text-xl font-semibold text-gradient-primary mb-6">Create New Task</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Title Input */}
         <div className="form-group md:col-span-2">
-          <label htmlFor="title" className="form-label">
+          <label htmlFor="title" className="block text-sm font-medium text-neutral mb-2">
             Title
           </label>
-          <input
-            type="text"
-            id="title"
-            name="title"
-            value={formData.title}
-            onChange={handleChange}
-            required
-            className="input"
-            placeholder="What needs to be done?"
-          />
+          <div className="relative">
+            <input
+              type="text"
+              id="title"
+              name="title"
+              value={formData.title}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:border-secondary focus:ring-1 focus:ring-secondary text-neutral placeholder-neutral/50 transition-all"
+              placeholder="What needs to be done?"
+            />
+          </div>
         </div>
 
-        {/* Category Input */}
         <div className="form-group">
-          <label htmlFor="category" className="form-label">
+          <label htmlFor="category" className="block text-sm font-medium text-neutral mb-2">
             Category
           </label>
           <input
@@ -67,14 +68,13 @@ function TaskForm({ onSubmit }) {
             name="category"
             value={formData.category}
             onChange={handleChange}
-            className="input"
+            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:border-secondary focus:ring-1 focus:ring-secondary text-neutral placeholder-neutral/50 transition-all"
             placeholder="e.g., personal, work, shopping"
           />
         </div>
 
-        {/* Priority Select */}
         <div className="form-group">
-          <label htmlFor="priority" className="form-label">
+          <label htmlFor="priority" className="block text-sm font-medium text-neutral mb-2">
             Priority
           </label>
           <select
@@ -82,17 +82,16 @@ function TaskForm({ onSubmit }) {
             name="priority"
             value={formData.priority}
             onChange={handleChange}
-            className="input"
+            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:border-secondary focus:ring-1 focus:ring-secondary text-neutral transition-all"
           >
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
+            <option value="low">Low Priority</option>
+            <option value="medium">Medium Priority</option>
+            <option value="high">High Priority</option>
           </select>
         </div>
 
-        {/* Description Textarea */}
         <div className="form-group md:col-span-2">
-          <label htmlFor="description" className="form-label">
+          <label htmlFor="description" className="block text-sm font-medium text-neutral mb-2">
             Description
           </label>
           <textarea
@@ -101,14 +100,13 @@ function TaskForm({ onSubmit }) {
             value={formData.description}
             onChange={handleChange}
             rows="3"
-            className="input"
+            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:border-secondary focus:ring-1 focus:ring-secondary text-neutral placeholder-neutral/50 transition-all resize-none"
             placeholder="Add more details about your task..."
           />
         </div>
 
-        {/* Due Date Input */}
         <div className="form-group">
-          <label htmlFor="dueDate" className="form-label">
+          <label htmlFor="dueDate" className="block text-sm font-medium text-neutral mb-2">
             Due Date
           </label>
           <input
@@ -117,29 +115,33 @@ function TaskForm({ onSubmit }) {
             name="dueDate"
             value={formData.dueDate}
             onChange={handleChange}
-            className="input"
+            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:border-secondary focus:ring-1 focus:ring-secondary text-neutral transition-all"
           />
         </div>
 
-        {/* Completed Checkbox */}
-        <div className="form-group flex items-center space-x-2">
+        <div className="form-group flex items-center space-x-3">
           <input
             type="checkbox"
             id="completed"
             name="completed"
             checked={formData.completed}
             onChange={handleChange}
-            className="h-5 w-5 rounded border-gold/30 text-gold focus:ring-gold/20 bg-black"
+            className="w-5 h-5 rounded border-white/10 text-secondary focus:ring-secondary/20 bg-white/5 transition-all"
           />
-          <label htmlFor="completed" className="form-label mb-0">
+          <label htmlFor="completed" className="text-sm font-medium text-neutral select-none">
             Mark as completed
           </label>
         </div>
       </div>
 
-      {/* Submit Button */}
       <div className="mt-6">
-        <button type="submit" className="btn btn-primary w-full">
+        <button
+          type="submit"
+          className="w-full px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white font-medium rounded-lg hover:shadow-glow transition-all duration-300 flex items-center justify-center gap-2"
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+          </svg>
           Add Task
         </button>
       </div>

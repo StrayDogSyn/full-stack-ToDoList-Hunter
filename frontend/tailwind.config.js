@@ -1,8 +1,7 @@
-// Added comments to improve readability and maintainability
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./src/**/*.{js,jsx,ts,tsx}", // Scans all JS/TS files in the src folder for Tailwind classes
+    "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
     extend: {
@@ -27,20 +26,41 @@ module.exports = {
             mid: '#1A1A1A',
             end: '#2A2A2A'
           }
-        }
+        },
+        primary: {
+          DEFAULT: '#2E3192',
+          light: '#3D40B5',
+          dark: '#1E2061',
+        },
+        secondary: {
+          DEFAULT: '#00A0DC',
+          light: '#1CB5F1',
+          dark: '#0077A3',
+        },
+        accent: {
+          DEFAULT: '#FFB81C',
+          light: '#FFC84D',
+          dark: '#CC9200',
+        },
+        neutral: {
+          DEFAULT: '#F5F5F5',
+          dark: '#2C3E50',
+        },
       },
       fontFamily: {
         sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
       },
       backgroundImage: {
         'gradient-metallic': 'linear-gradient(135deg, var(--tw-gradient-from) 0%, var(--tw-gradient-to) 100%)',
-        'gradient-radial': 'radial-gradient(circle, var(--tw-gradient-from) 0%, var(--tw-gradient-to) 100%)'
+        'gradient-radial': 'radial-gradient(circle, var(--tw-gradient-from) 0%, var(--tw-gradient-to) 100%)',
+        'gradient-primary': 'linear-gradient(135deg, var(--tw-gradient-from), var(--tw-gradient-to))',
       },
       animation: {
         'fade-in': 'fadeIn 0.3s ease-out forwards',
         'slide-in': 'slideIn 0.3s ease-out forwards',
         'pulse-gold': 'pulseGold 2s infinite',
         'shimmer': 'shimmer 2.5s linear infinite',
+        'slide-up': 'slideUp 0.4s ease-out forwards',
       },
       keyframes: {
         fadeIn: {
@@ -62,13 +82,19 @@ module.exports = {
         shimmer: {
           '0%': { backgroundPosition: '200% 0' },
           '100%': { backgroundPosition: '-200% 0' },
-        }
+        },
+        slideUp: {
+          '0%': { transform: 'translateY(10px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
       },
       boxShadow: {
         'gold': '0 4px 6px -1px rgba(255, 215, 0, 0.1), 0 2px 4px -1px rgba(255, 215, 0, 0.06)',
         'gold-lg': '0 10px 15px -3px rgba(255, 215, 0, 0.1), 0 4px 6px -2px rgba(255, 215, 0, 0.05)',
         'gold-inner': 'inset 0 2px 4px 0 rgba(255, 215, 0, 0.06)',
         'metallic': '0 4px 6px -1px rgba(212, 175, 55, 0.1), 0 2px 4px -1px rgba(212, 175, 55, 0.06)',
+        'glow': '0 0 15px rgba(0, 160, 220, 0.3)',
+        'glow-accent': '0 0 15px rgba(255, 184, 28, 0.3)',
       },
       transitionProperty: {
         'height': 'height',
@@ -118,6 +144,23 @@ module.exports = {
           '&:hover': {
             'background-color': theme('colors.gold.dark', '#B8860B'),
           },
+        },
+        '.glassmorphism': {
+          'background': 'rgba(255, 255, 255, 0.05)',
+          'backdrop-filter': 'blur(8px)',
+          'border': '1px solid rgba(255, 255, 255, 0.1)',
+        },
+        '.text-gradient-primary': {
+          'background': `linear-gradient(135deg, ${theme('colors.primary.DEFAULT')}, ${theme('colors.secondary.DEFAULT')})`,
+          'background-clip': 'text',
+          '-webkit-background-clip': 'text',
+          'color': 'transparent',
+        },
+        '.text-gradient-accent': {
+          'background': `linear-gradient(135deg, ${theme('colors.secondary.DEFAULT')}, ${theme('colors.accent.DEFAULT')})`,
+          'background-clip': 'text',
+          '-webkit-background-clip': 'text',
+          'color': 'transparent',
         },
       })
     }
