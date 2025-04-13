@@ -14,7 +14,8 @@
     "lint:frontend": "cd frontend && npm run lint",
     "lint:backend": "cd backend && npm run lint",
     "type-check:frontend": "cd frontend && npm run type-check",
-    "type-check:backend": "cd backend && npm run type-check"
+    "type-check:backend": "cd backend && npm run type-check",
+    "verify-links": "node scripts/verify-links.js"
   },
   "workspaces": [
     "frontend",
