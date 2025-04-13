@@ -11,4 +11,18 @@ export default [
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
+  {
+    languageOptions: {
+      globals: {
+        process: true
+      }
+    },
+    rules: {
+      "no-undef": "off",
+      "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+      "@typescript-eslint/no-explicit-any": "warn",
+      "@typescript-eslint/no-empty-interface": ["error", { "allowSingleExtends": true }]
+    },
+    ignores: ["dist/**/*"]
+  }
 ];

@@ -5,13 +5,13 @@ import { logError } from '../utils/logger';
 export class TaskService {
   static async getAllTasks(filters: TaskFilters): Promise<Task[]> {
     try {
-      const query: any = {};
+      const query: Record<string, unknown> = {};
       if (filters.search) query.$text = { $search: filters.search };
       if (filters.category) query.category = filters.category;
       if (filters.priority) query.priority = filters.priority;
       if (filters.completed !== undefined) query.completed = filters.completed === true || filters.completed === 'true';
 
-      const sort: { [key: string]: 1 | -1 } = {};
+      const sort: Record<string, 1 | -1> = {};
       sort[filters.sortBy || 'createdAt'] = filters.sortOrder === 'desc' ? -1 : 1;
 
       return await TaskModel.find(query).sort(sort);
@@ -67,7 +67,7 @@ export class TaskService {
 
   static async searchTasks(filters: TaskFilters): Promise<Task[]> {
     try {
-      const query: any = {};
+      const query: Record<string, unknown> = {};
       if (filters.priority) query.priority = filters.priority;
       if (filters.category) query.category = filters.category;
       if (filters.completed !== undefined) query.completed = filters.completed === true || filters.completed === 'true';
@@ -84,4 +84,4 @@ export class TaskService {
       throw error;
     }
   }
-} 
+}
