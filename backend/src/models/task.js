@@ -5,7 +5,8 @@ const taskSchema = new mongoose.Schema({
   title: { 
     type: String, 
     required: true,
-    trim: true
+    trim: true,
+    index: true
   },
   description: { 
     type: String,
@@ -23,28 +24,25 @@ const taskSchema = new mongoose.Schema({
     enum: ['personal', 'work', 'shopping', 'other'],
     default: 'personal'
   },
-  dueDate: {
-    type: Date
-  },
   completed: { 
     type: Boolean, 
-    default: false 
+    default: false,
+    index: true
   },
-  createdAt: {
+  dueDate: {
     type: Date,
-    default: Date.now
-  },
-  updatedAt: {
-    type: Date,
-    default: Date.now
+    index: true
   }
 }, {
   timestamps: true
 });
 
-// Add index for better query performance
-taskSchema.index({ category: 1, priority: 1 });
+// Add text index for search
+taskSchema.index({ title: 'text', description: 'text' });
 
-const Task = mongoose.model('Task', taskSchema);
+// Add compound index for common queries
+taskSchema.index({ category: 1, priority: 1, completed: 1 });
 
-export default Task;
+const TaskModel = mongoose.model('Task', taskSchema);
+
+export default TaskModel;

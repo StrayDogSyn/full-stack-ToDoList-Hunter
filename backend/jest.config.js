@@ -1,5 +1,4 @@
 module.exports = {
-  preset: 'ts-jest',
   testEnvironment: 'node',
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
@@ -9,14 +8,12 @@ module.exports = {
     '^@models/(.*)$': '<rootDir>/src/models/$1',
     '^@routes/(.*)$': '<rootDir>/src/routes/$1',
     '^@services/(.*)$': '<rootDir>/src/services/$1',
-    '^@utils/(.*)$': '<rootDir>/src/utils/$1',
-    '^@types/(.*)$': '<rootDir>/src/types/$1'
+    '^@utils/(.*)$': '<rootDir>/src/utils/$1'
   },
-  testMatch: ['**/*.test.ts'],
+  testMatch: ['**/*.test.js'],
   collectCoverageFrom: [
-    'src/**/*.ts',
-    '!src/**/*.d.ts',
-    '!src/types/**/*'
+    'src/**/*.js',
+    '!src/**/*.d.js'
   ],
   coverageThreshold: {
     global: {
@@ -26,4 +23,4 @@ module.exports = {
       statements: 80
     }
   }
-}; 
+};

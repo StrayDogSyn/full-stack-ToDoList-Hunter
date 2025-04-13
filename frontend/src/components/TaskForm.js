@@ -6,7 +6,7 @@ function TaskForm({ onSubmit }) {
     title: '',
     description: '',
     category: '',
-    priority: 'Medium',
+    priority: 'medium',
     dueDate: '',
     completed: false
   });
@@ -14,12 +14,18 @@ function TaskForm({ onSubmit }) {
   // Handles form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(formData);
+    // Normalize the priority to lowercase before submitting
+    const normalizedData = {
+      ...formData,
+      priority: formData.priority.toLowerCase(),
+      category: formData.category.toLowerCase() || 'personal' // Provide default category
+    };
+    onSubmit(normalizedData);
     setFormData({
       title: '',
       description: '',
       category: '',
-      priority: 'Medium',
+      priority: 'medium',
       dueDate: '',
       completed: false
     });
@@ -98,9 +104,9 @@ function TaskForm({ onSubmit }) {
             onChange={handleChange}
             className="w-full bg-black border border-gold/30 rounded px-3 py-2 text-gold focus:outline-none focus:border-gold"
           >
-            <option value="Low">Low</option>
-            <option value="Medium">Medium</option>
-            <option value="High">High</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
           </select>
         </div>
 

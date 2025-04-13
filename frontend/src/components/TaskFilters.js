@@ -68,9 +68,9 @@ function TaskFilters({ filters, categories, onChange }) {
             className="w-full bg-black border border-gold/30 rounded px-3 py-2 text-gold focus:outline-none focus:border-gold"
           >
             <option value="">All Priorities</option>
-            <option value="Low">Low</option>
-            <option value="Medium">Medium</option>
-            <option value="High">High</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
           </select>
         </div>
 
