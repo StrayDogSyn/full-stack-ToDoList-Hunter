@@ -1,5 +1,5 @@
-import TaskModel from '../models/Task';
-import { logError } from '../utils/logger';
+import TaskModel from '../models/Task.js';
+import { logError } from '../utils/logger.js';
 
 class TaskService {
   static async getAllTasks(filters) {

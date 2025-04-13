@@ -6,6 +6,9 @@ import TaskForm from './components/TaskForm';
 import TaskFilters from './components/TaskFilters';
 import Footer from './components/Footer';
 
+// Add fallback value for API URL
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001/api';
+
 function App() {
   const [tasks, setTasks] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -22,7 +25,7 @@ function App() {
 
   const checkServerConnection = async () => {
     try {
-      await axios.get(`${process.env.REACT_APP_API_URL}/health`);
+      await axios.get(`${API_URL}/health`);
       setServerConnected(true);
       setError('');
     } catch (err) {
@@ -45,7 +48,7 @@ function App() {
 
   const fetchTasks = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}/tasks`, { params: filters });
+      const response = await axios.get(`${API_URL}/tasks`, { params: filters });
       setTasks(response.data);
     } catch (err) {
       setError('Error fetching tasks. Please try again.');
@@ -55,7 +58,7 @@ function App() {
 
   const fetchCategories = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}/categories`);
+      const response = await axios.get(`${API_URL}/categories`);
       setCategories(response.data);
     } catch (err) {
       console.error('Error fetching categories:', err);
@@ -64,7 +67,7 @@ function App() {
 
   const handleTaskCreate = async (taskData) => {
     try {
-      await axios.post(`${process.env.REACT_APP_API_URL}/tasks`, taskData);
+      await axios.post(`${API_URL}/tasks`, taskData);
       fetchTasks();
       fetchCategories();
     } catch (err) {
@@ -75,7 +78,7 @@ function App() {
 
   const handleTaskUpdate = async (id, taskData) => {
     try {
-      await axios.put(`${process.env.REACT_APP_API_URL}/tasks/${id}`, taskData);
+      await axios.put(`${API_URL}/tasks/${id}`, taskData);
       fetchTasks();
     } catch (err) {
       setError('Error updating task. Please try again.');
@@ -85,7 +88,7 @@ function App() {
 
   const handleTaskDelete = async (id) => {
     try {
-      await axios.delete(`${process.env.REACT_APP_API_URL}/tasks/${id}`);
+      await axios.delete(`${API_URL}/tasks/${id}`);
       fetchTasks();
     } catch (err) {
       setError('Error deleting task. Please try again.');
@@ -187,4 +190,4 @@ function App() {
   );
 }
 
-export default App; 
+export default App;

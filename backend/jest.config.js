@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   testEnvironment: 'node',
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
@@ -10,10 +10,14 @@ module.exports = {
     '^@services/(.*)$': '<rootDir>/src/services/$1',
     '^@utils/(.*)$': '<rootDir>/src/utils/$1'
   },
-  testMatch: ['**/*.test.js'],
+  transform: {
+    '^.+\\.tsx?$': ['ts-jest']
+  },
+  extensionsToTreatAsEsm: ['.ts'],
+  testMatch: ['**/*.test.ts', '**/*.test.js'],
   collectCoverageFrom: [
-    'src/**/*.js',
-    '!src/**/*.d.js'
+    'src/**/*.{js,ts}',
+    '!src/**/*.d.ts'
   ],
   coverageThreshold: {
     global: {
@@ -23,4 +27,4 @@ module.exports = {
       statements: 80
     }
   }
-};
+}

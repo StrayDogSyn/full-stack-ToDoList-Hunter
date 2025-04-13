@@ -21,6 +21,8 @@
     "backend"
   ],
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.29.1",
+    "@typescript-eslint/parser": "^8.29.1",
     "source-map-loader": "^5.0.0"
   }
 }

@@ -1,14 +1,14 @@
-import express from 'express';
+import * as express from 'express';
 import cors from 'cors';
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
+import * as dotenv from 'dotenv';
 import apiRoutes from './routes/api';
 import errorHandler from './middleware/errorHandler';
 import requestLogger from './middleware/requestLogger';
+import { connectDB } from './config/db';
 
 dotenv.config();
 
-const app = express();
+const app = express.default();
 const port = process.env.PORT || 5001;
 
 // Middleware
@@ -22,15 +22,14 @@ app.use('/api', apiRoutes);
 // Error handling
 app.use(errorHandler);
 
-// MongoDB connection
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/straydog_todo')
+// Connect to MongoDB and start server
+connectDB()
   .then(() => {
-    console.log('Connected to MongoDB');
     app.listen(port, () => {
       console.log(`Server is running on port ${port}`);
     });
   })
   .catch((error) => {
-    console.error('MongoDB connection error:', error);
+    console.error('Server failed to start:', error);
     process.exit(1);
   });
