@@ -1,62 +1,86 @@
-.logo-text {
-  @apply flex items-center justify-center h-12 w-12 
-         bg-gradient-radial from-gold/20 to-transparent
-         rounded-full transition-all duration-300
-         border-2 border-gold/30 hover:border-gold;
+@import '../../styles/index.css';
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  width: 3rem;
 }
 
-.logo-text span {
-  @apply metallic-text font-bold;
+.metallic-text {
+  background: linear-gradient(to right, #ffd700, #ffed4a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: bold;
 }
 
-.header-container {
-  @apply bg-gradient-to-b from-black-rich to-transparent
-         border-b-2 border-gold/30
-         backdrop-blur-md;
+.header {
+  background: linear-gradient(to bottom, var(--color-black-rich), transparent);
+  padding: 1rem;
 }
 
 .header-content {
-  @apply flex flex-col md:flex-row items-center justify-between gap-4
-         py-4 px-6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
-.logo-container {
-  @apply flex items-center gap-4 
-         transform hover:scale-105 transition-transform duration-300;
+@media (min-width: 768px) {
+  .header-content {
+    flex-direction: row;
+  }
 }
 
-.app-title {
-  @apply metallic-text text-xl md:text-2xl font-bold;
+.nav-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
-.name-input {
-  @apply input max-w-md placeholder-gold/50 
-         focus:outline-none focus:ring-2 focus:ring-gold/50;
+.header-title {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
-.name-button {
-  @apply btn btn-primary hover:scale-105;
+@media (min-width: 768px) {
+  .header-title {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
 }
 
-.welcome-container {
-  @apply flex items-center gap-4 
-         animate-fade-in;
+.header-search {
+  max-width: 28rem;
 }
 
-.welcome-text {
-  @apply text-xl font-semibold 
-         bg-gradient-to-r from-gold-light via-gold to-gold-dark
-         bg-clip-text text-transparent;
+.header-button {
+  transition: transform 200ms;
 }
 
-.change-name-button {
-  @apply text-gold/70 hover:text-gold 
-         transition-colors duration-300
-         underline-offset-4 hover:underline
-         hover:scale-105;
+.header-button:hover {
+  transform: scale(1.05);
 }
 
-/* Button and logo hover effects */
-.interactive-element {
-  @apply transform transition-transform duration-200 hover:scale-105;
+.user-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.nav-link {
+  color: rgba(255, 215, 0, 0.7);
+  transition: color 200ms;
+}
+
+.nav-link:hover {
+  color: #ffd700;
 }

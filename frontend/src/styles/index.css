@@ -1,195 +1,138 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
-@layer base {
-  :root {
-    --primary-black: #000000;
-    --accent-gold: #FFD700;
-    --gold-dark: #B8860B;
-    --gold-light: #FFE55C;
-    --gold-metallic: #D4AF37;
-  }
-
-  body {
-    @apply bg-gradient-to-br from-black-gradient-start via-black-gradient-mid to-black-gradient-end text-gold min-h-screen;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  }
+:root {
+  --color-gold: #ffd700;
+  --color-black-rich: #000000;
+  --color-black-matte: #1a1a1a;
 }
 
-@layer components {
+body {
+  background: linear-gradient(to bottom right, var(--color-black-rich), var(--color-black-matte), #000);
+  color: var(--color-gold);
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
   .container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-  }
-
-  .btn {
-    @apply px-4 py-2 rounded-md font-medium transition-all duration-300 ease-in-out;
-  }
-
-  .btn-primary {
-    @apply bg-gradient-to-r from-gold-gradient-start via-gold-gradient-mid to-gold-gradient-end 
-           text-black font-semibold 
-           hover:from-gold-gradient-end hover:to-gold-gradient-start
-           focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-black
-           transform hover:scale-105 active:scale-95
-           shadow-gold hover:shadow-gold-lg;
-  }
-
-  .btn-secondary {
-    @apply bg-black border-2 border-gold text-gold
-           hover:bg-gradient-metallic hover:from-gold/10 hover:to-transparent
-           focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-black
-           transform hover:scale-105 active:scale-95;
-  }
-
-  .input {
-    @apply w-full bg-black border-2 border-gold/30 rounded-md px-4 py-2 
-           text-gold placeholder-gold/30
-           focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20
-           transition-all duration-300
-           hover:border-gold/50;
-  }
-
-  .card {
-    @apply bg-gradient-to-br from-black-rich via-black-matte to-black 
-           border-2 border-gold/30 rounded-lg p-6
-           hover:border-gold transition-colors duration-300
-           transform hover:scale-[1.02] hover:shadow-gold-lg
-           backdrop-blur-sm;
-  }
-
-  .nav-link {
-    @apply text-gold relative overflow-hidden
-           before:content-[''] before:absolute before:bottom-0 before:left-0 
-           before:w-full before:h-0.5 before:bg-gold
-           before:transform before:scale-x-0 before:origin-right
-           before:transition-transform before:duration-300
-           hover:before:scale-x-100 hover:before:origin-left;
-  }
-
-  .form-group {
-    @apply space-y-2;
-  }
-
-  .form-label {
-    @apply block text-sm font-medium text-gold/90 mb-1;
-  }
-
-  .form-error {
-    @apply text-red-500 text-sm mt-1 animate-fade-in;
-  }
-
-  .metallic-text {
-    @apply bg-gradient-to-r from-gold-light via-gold to-gold-dark 
-           bg-clip-text text-transparent 
-           animate-shimmer;
-  }
-
-  .shimmer-border {
-    @apply relative
-           before:absolute before:inset-0
-           before:p-[2px]
-           before:bg-gradient-to-r before:from-gold/50 before:via-gold before:to-gold/50
-           before:rounded-lg before:-z-10
-           before:animate-shimmer
-           before:bg-[length:200%_100%];
+    padding: 0 1.5rem;
   }
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  @apply w-2;
-}
-
-::-webkit-scrollbar-track {
-  @apply bg-black rounded-full;
-}
-
-::-webkit-scrollbar-thumb {
-  @apply bg-gradient-to-b from-gold/30 to-gold-dark/30 
-         rounded-full 
-         hover:from-gold/50 hover:to-gold-dark/50 
-         transition-colors;
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 2rem;
   }
 }
 
-.animate-fade-in {
-  animation: fadeIn 0.3s ease-out forwards;
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  transition: all 300ms ease-in-out;
 }
 
-/* Focus styles */
-.focus-ring {
-  @apply focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-black;
+.btn-primary {
+  background: linear-gradient(to right, #ffd700, #ffed4a, #ffd700);
 }
 
-/* Loading spinner */
+.btn-secondary {
+  background: #000;
+  border: 2px solid var(--color-gold);
+  color: var(--color-gold);
+}
+
+.input {
+  width: 100%;
+  background: #000;
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+}
+
+.form-group {
+  margin-bottom: 0.5rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(255, 215, 0, 0.9);
+  margin-bottom: 0.25rem;
+}
+
+.error-message {
+  color: #ef4444;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  animation: fadeIn 0.3s ease-in;
+}
+
 .loading-spinner {
-  @apply animate-spin rounded-full h-6 w-6
-         bg-gradient-to-r from-gold via-transparent to-gold
-         border-2 border-transparent;
+  animation: spin 1s linear infinite;
+  border-radius: 9999px;
+  height: 1.5rem;
+  width: 1.5rem;
 }
 
-/* Modal */
-.modal-overlay {
-  @apply fixed inset-0 
-         bg-black/80 backdrop-blur-sm 
-         transition-opacity duration-300;
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(to bottom right, var(--color-black-rich), #000);
 }
 
-.modal-content {
-  @apply bg-gradient-to-br from-black-rich to-black
-         border-2 border-gold/30
-         rounded-lg shadow-gold-lg p-6 
-         max-w-lg w-full mx-4 
-         transform transition-all duration-300 
-         hover:border-gold/50;
+.notification {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
 }
 
-/* Toast notifications */
-.toast {
-  @apply fixed bottom-4 right-4 
-         bg-gradient-to-r from-black to-black-rich
-         border-l-4 rounded-r-lg shadow-gold-lg p-4 
-         transform transition-all duration-300;
+.status-success {
+  border-left-color: #22c55e;
+  color: #4ade80;
 }
 
-.toast-success {
-  @apply border-l-green-500 text-green-400;
+.status-error {
+  border-left-color: #ef4444;
+  color: #f87171;
 }
 
-.toast-error {
-  @apply border-l-red-500 text-red-400;
+.alert-error {
+  background: linear-gradient(to right, rgba(127, 29, 29, 0.5), rgba(185, 28, 28, 0.5));
+  color: #fca5a5;
 }
 
-/* Task priority indicators */
-.priority-high {
-  @apply bg-gradient-to-r from-red-900/50 to-red-700/50 text-red-300;
+.alert-warning {
+  background: linear-gradient(to right, rgba(146, 64, 14, 0.5), rgba(180, 83, 9, 0.5));
+  color: #fcd34d;
 }
 
-.priority-medium {
-  @apply bg-gradient-to-r from-yellow-900/50 to-yellow-700/50 text-yellow-300;
+.alert-success {
+  background: linear-gradient(to right, rgba(20, 83, 45, 0.5), rgba(21, 128, 61, 0.5));
+  color: #86efac;
 }
 
-.priority-low {
-  @apply bg-gradient-to-r from-green-900/50 to-green-700/50 text-green-300;
+.tag {
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
 }
 
-/* Task category badges */
-.category-badge {
-  @apply px-2 py-1 rounded-full text-sm font-medium
-         bg-gradient-to-r from-gold/20 to-gold-dark/20
-         border border-gold/30
-         hover:from-gold/30 hover:to-gold-dark/30
-         transition-colors duration-300;
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
