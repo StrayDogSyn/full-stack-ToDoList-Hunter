@@ -1,20 +1,18 @@
-import { Request, Response } from 'express';
-import { CreateTaskDTO, UpdateTaskDTO, TaskFilters } from '../types/task';
-import { TaskService } from '../services/TaskService';
-import { logError } from '../utils/logger';
+const TaskService = require('../services/TaskService');
+const { logError } = require('../utils/logger');
 
-export const getAllTasks = async (req: Request, res: Response): Promise<void> => {
+const getAllTasks = async (req, res) => {
   try {
-    const filters = req.query as TaskFilters;
+    const filters = req.query;
     const tasks = await TaskService.getAllTasks(filters);
     res.json(tasks);
   } catch (error) {
-    logError(error as Error, 'getAllTasks');
-    res.status(500).json({ message: 'Error fetching tasks', error: (error as Error).message });
+    logError(error, 'getAllTasks');
+    res.status(500).json({ message: 'Error fetching tasks', error: error.message });
   }
 };
 
-export const createTask = async (req: Request<object, object, CreateTaskDTO>, res: Response): Promise<void> => {
+const createTask = async (req, res) => {
   try {
     const { title } = req.body;
     
@@ -26,15 +24,12 @@ export const createTask = async (req: Request<object, object, CreateTaskDTO>, re
     const task = await TaskService.createTask(req.body);
     res.status(201).json(task);
   } catch (error) {
-    logError(error as Error, 'createTask');
-    res.status(400).json({ message: 'Error creating task', error: (error as Error).message });
+    logError(error, 'createTask');
+    res.status(400).json({ message: 'Error creating task', error: error.message });
   }
 };
 
-export const updateTask = async (
-  req: Request<{ id: string }, object, UpdateTaskDTO>,
-  res: Response
-): Promise<void> => {
+const updateTask = async (req, res) => {
   try {
     const { id } = req.params;
     const task = await TaskService.updateTask(id, req.body);
@@ -46,15 +41,12 @@ export const updateTask = async (
 
     res.json(task);
   } catch (error) {
-    logError(error as Error, 'updateTask');
-    res.status(400).json({ message: 'Error updating task', error: (error as Error).message });
+    logError(error, 'updateTask');
+    res.status(400).json({ message: 'Error updating task', error: error.message });
   }
 };
 
-export const deleteTask = async (
-  req: Request<{ id: string }>,
-  res: Response
-): Promise<void> => {
+const deleteTask = async (req, res) => {
   try {
     const { id } = req.params;
     const success = await TaskService.deleteTask(id);
@@ -66,17 +58,19 @@ export const deleteTask = async (
 
     res.json({ message: 'Task deleted successfully' });
   } catch (error) {
-    logError(error as Error, 'deleteTask');
-    res.status(400).json({ message: 'Error deleting task', error: (error as Error).message });
+    logError(error, 'deleteTask');
+    res.status(400).json({ message: 'Error deleting task', error: error.message });
   }
 };
 
-export const filterTasks = async (req: Request<object, object, object, TaskFilters>, res: Response): Promise<void> => {
+const filterTasks = async (req, res) => {
   try {
     const tasks = await TaskService.searchTasks(req.query);
     res.json(tasks);
   } catch (error) {
-    logError(error as Error, 'filterTasks');
-    res.status(400).json({ message: 'Error filtering tasks', error: (error as Error).message });
+    logError(error, 'filterTasks');
+    res.status(400).json({ message: 'Error filtering tasks', error: error.message });
   }
 };
+
+module.exports = { getAllTasks, createTask, updateTask, deleteTask, filterTasks };

@@ -1,5 +1,5 @@
-const TaskModel = require('../models/Task');
-const { logError } = require('../utils/logger');
+import TaskModel from '../models/Task';
+import { logError } from '../utils/logger';
 
 class TaskService {
   static async getAllTasks(filters) {
@@ -85,4 +85,4 @@ class TaskService {
   }
 }
 
-module.exports = TaskService;
+export default TaskService;

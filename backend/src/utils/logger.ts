@@ -21,4 +21,4 @@ const logError = (error, context) => {
   }
 };
 
-module.exports = { logRequest, logError };
+export { logRequest, logError };
