@@ -8,19 +8,11 @@
     --accent-gold: #FFD700;
     --gold-dark: #B8860B;
     --gold-light: #FFE55C;
-    --gray-100: #F3F4F6;
-    --gray-200: #E5E7EB;
-    --gray-300: #D1D5DB;
-    --gray-400: #9CA3AF;
-    --gray-500: #6B7280;
-    --gray-600: #4B5563;
-    --gray-700: #374151;
-    --gray-800: #1F2937;
-    --gray-900: #111827;
+    --gold-metallic: #D4AF37;
   }
 
   body {
-    @apply bg-black text-gold min-h-screen;
+    @apply bg-gradient-to-br from-black-gradient-start via-black-gradient-mid to-black-gradient-end text-gold min-h-screen;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   }
 }
@@ -31,27 +23,48 @@
   }
 
   .btn {
-    @apply px-4 py-2 rounded font-medium transition-all duration-200 ease-in-out;
+    @apply px-4 py-2 rounded-md font-medium transition-all duration-300 ease-in-out;
   }
 
   .btn-primary {
-    @apply bg-gold text-black hover:bg-gold-dark focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-black;
+    @apply bg-gradient-to-r from-gold-gradient-start via-gold-gradient-mid to-gold-gradient-end 
+           text-black font-semibold 
+           hover:from-gold-gradient-end hover:to-gold-gradient-start
+           focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-black
+           transform hover:scale-105 active:scale-95
+           shadow-gold hover:shadow-gold-lg;
   }
 
   .btn-secondary {
-    @apply bg-transparent border border-gold text-gold hover:bg-gold/10 focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-black;
+    @apply bg-black border-2 border-gold text-gold
+           hover:bg-gradient-metallic hover:from-gold/10 hover:to-transparent
+           focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-black
+           transform hover:scale-105 active:scale-95;
   }
 
   .input {
-    @apply w-full bg-black border border-gold/30 rounded px-3 py-2 text-gold focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20;
+    @apply w-full bg-black border-2 border-gold/30 rounded-md px-4 py-2 
+           text-gold placeholder-gold/30
+           focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20
+           transition-all duration-300
+           hover:border-gold/50;
   }
 
   .card {
-    @apply bg-black border border-gold p-6 rounded-lg shadow-gold hover:shadow-lg transition-shadow duration-200;
+    @apply bg-gradient-to-br from-black-rich via-black-matte to-black 
+           border-2 border-gold/30 rounded-lg p-6
+           hover:border-gold transition-colors duration-300
+           transform hover:scale-[1.02] hover:shadow-gold-lg
+           backdrop-blur-sm;
   }
 
   .nav-link {
-    @apply text-gold hover:text-gold-light transition-colors duration-200;
+    @apply text-gold relative overflow-hidden
+           before:content-[''] before:absolute before:bottom-0 before:left-0 
+           before:w-full before:h-0.5 before:bg-gold
+           before:transform before:scale-x-0 before:origin-right
+           before:transition-transform before:duration-300
+           hover:before:scale-x-100 hover:before:origin-left;
   }
 
   .form-group {
@@ -59,26 +72,44 @@
   }
 
   .form-label {
-    @apply block text-sm font-medium text-gold;
+    @apply block text-sm font-medium text-gold/90 mb-1;
   }
 
   .form-error {
-    @apply text-red-500 text-sm mt-1;
+    @apply text-red-500 text-sm mt-1 animate-fade-in;
+  }
+
+  .metallic-text {
+    @apply bg-gradient-to-r from-gold-light via-gold to-gold-dark 
+           bg-clip-text text-transparent 
+           animate-shimmer;
+  }
+
+  .shimmer-border {
+    @apply relative
+           before:absolute before:inset-0
+           before:p-[2px]
+           before:bg-gradient-to-r before:from-gold/50 before:via-gold before:to-gold/50
+           before:rounded-lg before:-z-10
+           before:animate-shimmer
+           before:bg-[length:200%_100%];
   }
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  @apply w-2;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-black;
+  @apply bg-black rounded-full;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gold/30 rounded-full hover:bg-gold/50 transition-colors;
+  @apply bg-gradient-to-b from-gold/30 to-gold-dark/30 
+         rounded-full 
+         hover:from-gold/50 hover:to-gold-dark/50 
+         transition-colors;
 }
 
 /* Animations */
@@ -104,27 +135,60 @@
 
 /* Loading spinner */
 .loading-spinner {
-  @apply animate-spin rounded-full h-6 w-6 border-2 border-gold border-t-transparent;
+  @apply animate-spin rounded-full h-6 w-6
+         bg-gradient-to-r from-gold via-transparent to-gold
+         border-2 border-transparent;
 }
 
 /* Modal */
 .modal-overlay {
-  @apply fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-200;
+  @apply fixed inset-0 
+         bg-black/80 backdrop-blur-sm 
+         transition-opacity duration-300;
 }
 
 .modal-content {
-  @apply bg-black border border-gold rounded-lg shadow-gold p-6 max-w-lg w-full mx-4 transform transition-all duration-200;
+  @apply bg-gradient-to-br from-black-rich to-black
+         border-2 border-gold/30
+         rounded-lg shadow-gold-lg p-6 
+         max-w-lg w-full mx-4 
+         transform transition-all duration-300 
+         hover:border-gold/50;
 }
 
-/* Toast */
+/* Toast notifications */
 .toast {
-  @apply fixed bottom-4 right-4 bg-black border border-gold rounded-lg shadow-gold p-4 transform transition-all duration-200;
+  @apply fixed bottom-4 right-4 
+         bg-gradient-to-r from-black to-black-rich
+         border-l-4 rounded-r-lg shadow-gold-lg p-4 
+         transform transition-all duration-300;
 }
 
 .toast-success {
-  @apply border-green-500 text-green-500;
+  @apply border-l-green-500 text-green-400;
 }
 
 .toast-error {
-  @apply border-red-500 text-red-500;
-} 
+  @apply border-l-red-500 text-red-400;
+}
+
+/* Task priority indicators */
+.priority-high {
+  @apply bg-gradient-to-r from-red-900/50 to-red-700/50 text-red-300;
+}
+
+.priority-medium {
+  @apply bg-gradient-to-r from-yellow-900/50 to-yellow-700/50 text-yellow-300;
+}
+
+.priority-low {
+  @apply bg-gradient-to-r from-green-900/50 to-green-700/50 text-green-300;
+}
+
+/* Task category badges */
+.category-badge {
+  @apply px-2 py-1 rounded-full text-sm font-medium
+         bg-gradient-to-r from-gold/20 to-gold-dark/20
+         border border-gold/30
+         hover:from-gold/30 hover:to-gold-dark/30
+         transition-colors duration-300;

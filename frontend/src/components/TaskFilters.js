@@ -1,14 +1,11 @@
-// Added comments to improve readability and maintainability
 import React from 'react';
 
 function TaskFilters({ filters, categories, onChange }) {
-  // Handles changes in filter inputs
   const handleChange = (e) => {
     const { name, value } = e.target;
     onChange({ [name]: value });
   };
 
-  // Handles changes in sorting options
   const handleSortChange = (e) => {
     const { value } = e.target;
     const [sortBy, sortOrder] = value.split('-');
@@ -16,27 +13,42 @@ function TaskFilters({ filters, categories, onChange }) {
   };
 
   return (
-    <div className="bg-black border border-gold p-4 rounded-lg shadow-lg mb-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div className="card shimmer-border mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {/* Search Input */}
-        <div>
-          <label htmlFor="search" className="block text-sm font-medium text-gold mb-1">
+        <div className="form-group">
+          <label htmlFor="search" className="form-label">
             Search
           </label>
-          <input
-            type="text"
-            id="search"
-            name="search"
-            value={filters.search}
-            onChange={handleChange}
-            className="w-full bg-black border border-gold/30 rounded px-3 py-2 text-gold focus:outline-none focus:border-gold"
-            placeholder="Search tasks..."
-          />
+          <div className="relative">
+            <input
+              type="text"
+              id="search"
+              name="search"
+              value={filters.search}
+              onChange={handleChange}
+              className="input pl-10"
+              placeholder="Search tasks..."
+            />
+            <svg
+              className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gold/50"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+          </div>
         </div>
 
         {/* Category Selector */}
-        <div>
-          <label htmlFor="category" className="block text-sm font-medium text-gold mb-1">
+        <div className="form-group">
+          <label htmlFor="category" className="form-label">
             Category
           </label>
           <select
@@ -44,7 +56,7 @@ function TaskFilters({ filters, categories, onChange }) {
             name="category"
             value={filters.category}
             onChange={handleChange}
-            className="w-full bg-black border border-gold/30 rounded px-3 py-2 text-gold focus:outline-none focus:border-gold"
+            className="input"
           >
             <option value="">All Categories</option>
             {categories.map(category => (
@@ -56,8 +68,8 @@ function TaskFilters({ filters, categories, onChange }) {
         </div>
 
         {/* Priority Selector */}
-        <div>
-          <label htmlFor="priority" className="block text-sm font-medium text-gold mb-1">
+        <div className="form-group">
+          <label htmlFor="priority" className="form-label">
             Priority
           </label>
           <select
@@ -65,7 +77,7 @@ function TaskFilters({ filters, categories, onChange }) {
             name="priority"
             value={filters.priority}
             onChange={handleChange}
-            className="w-full bg-black border border-gold/30 rounded px-3 py-2 text-gold focus:outline-none focus:border-gold"
+            className="input"
           >
             <option value="">All Priorities</option>
             <option value="low">Low</option>
@@ -75,8 +87,8 @@ function TaskFilters({ filters, categories, onChange }) {
         </div>
 
         {/* Status Selector */}
-        <div>
-          <label htmlFor="status" className="block text-sm font-medium text-gold mb-1">
+        <div className="form-group">
+          <label htmlFor="status" className="form-label">
             Status
           </label>
           <select
@@ -84,7 +96,7 @@ function TaskFilters({ filters, categories, onChange }) {
             name="completed"
             value={filters.completed === undefined ? '' : filters.completed.toString()}
             onChange={handleChange}
-            className="w-full bg-black border border-gold/30 rounded px-3 py-2 text-gold focus:outline-none focus:border-gold"
+            className="input"
           >
             <option value="">All Tasks</option>
             <option value="false">Active</option>
@@ -93,15 +105,15 @@ function TaskFilters({ filters, categories, onChange }) {
         </div>
 
         {/* Sort Options */}
-        <div className="md:col-span-2 lg:col-span-4">
-          <label htmlFor="sort" className="block text-sm font-medium text-gold mb-1">
+        <div className="form-group md:col-span-2 lg:col-span-4">
+          <label htmlFor="sort" className="form-label">
             Sort By
           </label>
           <select
             id="sort"
             value={`${filters.sortBy}-${filters.sortOrder}`}
             onChange={handleSortChange}
-            className="w-full bg-black border border-gold/30 rounded px-3 py-2 text-gold focus:outline-none focus:border-gold"
+            className="input"
           >
             <option value="createdAt-desc">Newest First</option>
             <option value="createdAt-asc">Oldest First</option>

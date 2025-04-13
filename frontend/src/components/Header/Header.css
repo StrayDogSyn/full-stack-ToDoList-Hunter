@@ -1,27 +1,62 @@
 .logo-text {
-  @apply flex items-center justify-center h-12 w-12 bg-gold/10 rounded-full;
+  @apply flex items-center justify-center h-12 w-12 
+         bg-gradient-radial from-gold/20 to-transparent
+         rounded-full transition-all duration-300
+         border-2 border-gold/30 hover:border-gold;
 }
 
 .logo-text span {
-  @apply text-2xl font-bold text-gold;
+  @apply metallic-text font-bold;
 }
 
-/* Placeholder styles */
-input::placeholder {
-  @apply text-gold/50;
+.header-container {
+  @apply bg-gradient-to-b from-black-rich to-transparent
+         border-b-2 border-gold/30
+         backdrop-blur-md;
 }
 
-/* Focus styles */
-input:focus {
-  @apply outline-none border-gold shadow-gold;
+.header-content {
+  @apply flex flex-col md:flex-row items-center justify-between gap-4
+         py-4 px-6;
 }
 
-/* Hover effects */
-button:hover {
-  @apply transform transition-transform duration-200;
+.logo-container {
+  @apply flex items-center gap-4 
+         transform hover:scale-105 transition-transform duration-300;
 }
 
-/* Logo hover effect */
-img:hover {
-  @apply transform scale-105 transition-transform duration-200;
-} 
+.app-title {
+  @apply metallic-text text-xl md:text-2xl font-bold;
+}
+
+.name-input {
+  @apply input max-w-md placeholder-gold/50 
+         focus:outline-none focus:ring-2 focus:ring-gold/50;
+}
+
+.name-button {
+  @apply btn btn-primary hover:scale-105;
+}
+
+.welcome-container {
+  @apply flex items-center gap-4 
+         animate-fade-in;
+}
+
+.welcome-text {
+  @apply text-xl font-semibold 
+         bg-gradient-to-r from-gold-light via-gold to-gold-dark
+         bg-clip-text text-transparent;
+}
+
+.change-name-button {
+  @apply text-gold/70 hover:text-gold 
+         transition-colors duration-300
+         underline-offset-4 hover:underline
+         hover:scale-105;
+}
+
+/* Button and logo hover effects */
+.interactive-element {
+  @apply transform transition-transform duration-200 hover:scale-105;
+}
