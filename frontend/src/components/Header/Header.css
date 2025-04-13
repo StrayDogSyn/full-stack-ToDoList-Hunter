@@ -1,0 +1,27 @@
+.logo-text {
+  @apply flex items-center justify-center h-12 w-12 bg-gold/10 rounded-full;
+}
+
+.logo-text span {
+  @apply text-2xl font-bold text-gold;
+}
+
+/* Placeholder styles */
+input::placeholder {
+  @apply text-gold/50;
+}
+
+/* Focus styles */
+input:focus {
+  @apply outline-none border-gold shadow-gold;
+}
+
+/* Hover effects */
+button:hover {
+  @apply transform transition-transform duration-200;
+}
+
+/* Logo hover effect */
+img:hover {
+  @apply transform scale-105 transition-transform duration-200;
+} 
