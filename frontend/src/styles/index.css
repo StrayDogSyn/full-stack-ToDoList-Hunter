@@ -192,3 +192,4 @@
          border border-gold/30
          hover:from-gold/30 hover:to-gold-dark/30
          transition-colors duration-300;
+}

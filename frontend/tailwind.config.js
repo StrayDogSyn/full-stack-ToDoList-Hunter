@@ -74,7 +74,52 @@ module.exports = {
         'height': 'height',
         'spacing': 'margin, padding',
       },
+      textColor: {
+        'metallic': 'var(--metallic-text-color, #D4AF37)',
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    function({ addUtilities, theme }) {
+      addUtilities({
+        '.metallic-text': {
+          'background': 'linear-gradient(to right, #FFD700, #B8860B)',
+          'background-clip': 'text',
+          '-webkit-background-clip': 'text',
+          'color': 'transparent',
+          'text-shadow': '0 0 1px rgba(212, 175, 55, 0.3)',
+        },
+        '.input': {
+          'background-color': theme('colors.black.matte'),
+          'border': '1px solid',
+          'border-color': theme('colors.gold.DEFAULT', '#FFD700'),
+          'border-opacity': '0.3',
+          'color': theme('colors.gold.DEFAULT', '#FFD700'),
+          'padding': '0.5rem 1rem',
+          'border-radius': '0.375rem',
+          'transition': 'all 0.3s ease-in-out',
+          '&:focus': {
+            'border-opacity': '1',
+            'outline': 'none',
+            'ring': '2px',
+            'ring-color': theme('colors.gold.DEFAULT', '#FFD700'),
+            'ring-opacity': '0.5',
+          },
+        },
+        '.btn': {
+          'padding': '0.5rem 1rem',
+          'border-radius': '0.375rem',
+          'transition': 'all 0.3s ease-in-out',
+          'font-weight': '500',
+        },
+        '.btn-primary': {
+          'background-color': theme('colors.gold.DEFAULT', '#FFD700'),
+          'color': theme('colors.black.rich', '#0A0A0A'),
+          '&:hover': {
+            'background-color': theme('colors.gold.dark', '#B8860B'),
+          },
+        },
+      })
+    }
+  ],
 };
