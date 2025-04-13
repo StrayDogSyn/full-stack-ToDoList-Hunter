@@ -1,11 +1,10 @@
-import express from 'express';
-import cors from 'cors';
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-import apiRoutes from './routes/api';
-import { errorHandler } from './middleware/errorHandler';
-import { requestLogger } from './middleware/requestLogger';
-import fs from 'fs/promises';
+const express = require('express');
+const cors = require('cors');
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+const apiRoutes = require('./routes/api');
+const { errorHandler } = require('./middleware/errorHandler');
+const { requestLogger } = require('./middleware/requestLogger');
 
 dotenv.config();
 
@@ -31,12 +30,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/straydog_
       console.log(`Server is running on port ${port}`);
     });
   })
-  .catch((error: Error) => {
+  .catch((error) => {
     console.error('MongoDB connection error:', error);
     process.exit(1);
   });
-
-// Example usage of fs.stat to replace deprecated fs.Stats constructor
-fs.stat('path/to/file')
-  .then(stats => console.log(stats))
-  .catch(err => console.error(err));

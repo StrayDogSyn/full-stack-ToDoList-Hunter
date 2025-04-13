@@ -1,26 +1,43 @@
-export type Priority = 'low' | 'medium' | 'high';
-export type Category = 'personal' | 'work' | 'shopping' | 'other';
-export type SortBy = 'createdAt' | 'dueDate' | 'priority' | 'title';
+const Priority = ['low', 'medium', 'high'];
+const Category = ['personal', 'work', 'shopping', 'other'];
+const SortBy = ['createdAt', 'dueDate', 'priority', 'title'];
 
-export interface Task {
-  title: string;
-  description?: string;
-  priority: Priority;
-  category: Category;
-  completed: boolean;
-  dueDate?: string;
-  createdAt: string;
-  updatedAt: string;
-}
+const Task = {
+  title: '',
+  description: '',
+  priority: '',
+  category: '',
+  completed: false,
+  dueDate: '',
+  createdAt: '',
+  updatedAt: ''
+};
 
-export interface TaskFilters {
-  search?: string;
-  priority?: Priority;
-  category?: Category;
-  completed?: boolean | string;
-  sortBy?: SortBy;
-  sortOrder?: 'asc' | 'desc';
-}
+const TaskFilters = {
+  search: '',
+  priority: '',
+  category: '',
+  completed: false,
+  sortBy: '',
+  sortOrder: ''
+};
 
-export type CreateTaskDTO = Omit<Task, 'createdAt' | 'updatedAt'>;
-export type UpdateTaskDTO = Partial<CreateTaskDTO>; 
+const CreateTaskDTO = {
+  title: '',
+  description: '',
+  priority: '',
+  category: '',
+  completed: false,
+  dueDate: ''
+};
+
+const UpdateTaskDTO = {
+  title: '',
+  description: '',
+  priority: '',
+  category: '',
+  completed: false,
+  dueDate: ''
+};
+
+module.exports = { Priority, Category, SortBy, Task, TaskFilters, CreateTaskDTO, UpdateTaskDTO };

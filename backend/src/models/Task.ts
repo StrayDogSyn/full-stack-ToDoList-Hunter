@@ -1,9 +1,6 @@
-import mongoose, { Document, Schema } from 'mongoose';
-import { Task, Priority, Category } from '../types/task';
+const mongoose = require('mongoose');
 
-export interface TaskDocument extends Task, Document {}
-
-const taskSchema = new Schema<TaskDocument>({
+const taskSchema = new mongoose.Schema({
   title: { 
     type: String, 
     required: true,
@@ -17,13 +14,13 @@ const taskSchema = new Schema<TaskDocument>({
   priority: { 
     type: String, 
     required: true,
-    enum: ['low', 'medium', 'high'] as Priority[],
+    enum: ['low', 'medium', 'high'],
     default: 'medium'
   },
   category: {
     type: String,
     required: true,
-    enum: ['personal', 'work', 'shopping', 'other'] as Category[],
+    enum: ['personal', 'work', 'shopping', 'other'],
     default: 'personal'
   },
   completed: { 
@@ -45,6 +42,6 @@ taskSchema.index({ title: 'text', description: 'text' });
 // Add compound index for common queries
 taskSchema.index({ category: 1, priority: 1, completed: 1 });
 
-const TaskModel = mongoose.model<TaskDocument>('Task', taskSchema);
+const TaskModel = mongoose.model('Task', taskSchema);
 
-export default TaskModel; 
+module.exports = TaskModel;

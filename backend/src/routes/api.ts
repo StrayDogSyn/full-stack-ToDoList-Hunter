@@ -1,5 +1,5 @@
-import express from 'express';
-import taskRoutes from './taskRoutes';
+const express = require('express');
+const taskRoutes = require('./taskRoutes');
 
 const router = express.Router();
 
@@ -16,4 +16,4 @@ router.get('/categories', (_req, res) => {
 // API routes
 router.use('/tasks', taskRoutes);
 
-export default router;
+module.exports = router;

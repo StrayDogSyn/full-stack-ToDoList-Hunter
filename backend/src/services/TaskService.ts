@@ -1,27 +1,26 @@
-import { Task, CreateTaskDTO, UpdateTaskDTO, TaskFilters } from '../types/task';
-import TaskModel from '../models/Task';
-import { logError } from '../utils/logger';
+const TaskModel = require('../models/Task');
+const { logError } = require('../utils/logger');
 
-export class TaskService {
-  static async getAllTasks(filters: TaskFilters): Promise<Task[]> {
+class TaskService {
+  static async getAllTasks(filters) {
     try {
-      const query: Record<string, unknown> = {};
+      const query = {};
       if (filters.search) query.$text = { $search: filters.search };
       if (filters.category) query.category = filters.category;
       if (filters.priority) query.priority = filters.priority;
       if (filters.completed !== undefined) query.completed = filters.completed === true || filters.completed === 'true';
 
-      const sort: Record<string, 1 | -1> = {};
+      const sort = {};
       sort[filters.sortBy || 'createdAt'] = filters.sortOrder === 'desc' ? -1 : 1;
 
       return await TaskModel.find(query).sort(sort);
     } catch (error) {
-      logError(error as Error, 'TaskService.getAllTasks');
+      logError(error, 'TaskService.getAllTasks');
       throw error;
     }
   }
 
-  static async createTask(taskData: CreateTaskDTO): Promise<Task> {
+  static async createTask(taskData) {
     try {
       const task = new TaskModel({
         ...taskData,
@@ -30,12 +29,12 @@ export class TaskService {
       });
       return await task.save();
     } catch (error) {
-      logError(error as Error, 'TaskService.createTask');
+      logError(error, 'TaskService.createTask');
       throw error;
     }
   }
 
-  static async updateTask(id: string, taskData: UpdateTaskDTO): Promise<Task | null> {
+  static async updateTask(id, taskData) {
     try {
       const updateData = { ...taskData };
       if (updateData.dueDate) {
@@ -50,24 +49,24 @@ export class TaskService {
 
       return task;
     } catch (error) {
-      logError(error as Error, 'TaskService.updateTask');
+      logError(error, 'TaskService.updateTask');
       throw error;
     }
   }
 
-  static async deleteTask(id: string): Promise<boolean> {
+  static async deleteTask(id) {
     try {
       const result = await TaskModel.findByIdAndDelete(id);
       return result !== null;
     } catch (error) {
-      logError(error as Error, 'TaskService.deleteTask');
+      logError(error, 'TaskService.deleteTask');
       throw error;
     }
   }
 
-  static async searchTasks(filters: TaskFilters): Promise<Task[]> {
+  static async searchTasks(filters) {
     try {
-      const query: Record<string, unknown> = {};
+      const query = {};
       if (filters.priority) query.priority = filters.priority;
       if (filters.category) query.category = filters.category;
       if (filters.completed !== undefined) query.completed = filters.completed === true || filters.completed === 'true';
@@ -80,8 +79,10 @@ export class TaskService {
 
       return await TaskModel.find(query).sort({ createdAt: -1 });
     } catch (error) {
-      logError(error as Error, 'TaskService.searchTasks');
+      logError(error, 'TaskService.searchTasks');
       throw error;
     }
   }
 }
+
+module.exports = TaskService;
