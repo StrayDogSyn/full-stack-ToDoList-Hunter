@@ -12,12 +12,12 @@ function TaskFilters({ filters, categories, onChange }) {
   };
 
   return (
-    <div>
-      <h2 className="text-xl font-semibold text-gradient-primary mb-6">Filter Tasks</h2>
+    <div className="space-y-6">
+      <h2 className="text-2xl font-bold metallic-text mb-6">Filter Tasks</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {/* Search Input */}
         <div className="form-group lg:col-span-2">
-          <label htmlFor="search" className="block text-sm font-medium text-neutral mb-2">
+          <label htmlFor="search" className="block text-sm font-medium text-gold mb-2">
             Search Tasks
           </label>
           <div className="relative">
@@ -28,10 +28,10 @@ function TaskFilters({ filters, categories, onChange }) {
               value={filters.search}
               onChange={handleChange}
               placeholder="Search by title or description..."
-              className="w-full pl-10 pr-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:border-secondary focus:ring-1 focus:ring-secondary text-neutral placeholder-neutral/50 transition-all"
+              className="w-full pl-10 pr-4 py-3 bg-black-matte/50 border border-gold/20 rounded-lg focus:border-gold focus:ring-2 focus:ring-gold/20 text-gold-light placeholder-gold/40 transition-all"
             />
             <svg
-              className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-neutral/50"
+              className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gold/40"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -48,7 +48,7 @@ function TaskFilters({ filters, categories, onChange }) {
 
         {/* Category Selector */}
         <div className="form-group">
-          <label htmlFor="category" className="block text-sm font-medium text-neutral mb-2">
+          <label htmlFor="category" className="block text-sm font-medium text-gold mb-2">
             Category
           </label>
           <select
@@ -56,12 +56,12 @@ function TaskFilters({ filters, categories, onChange }) {
             name="category"
             value={filters.category}
             onChange={handleChange}
-            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:border-secondary focus:ring-1 focus:ring-secondary text-neutral transition-all"
+            className="w-full px-4 py-3 bg-black-matte/50 border border-gold/20 rounded-lg focus:border-gold focus:ring-2 focus:ring-gold/20 text-gold-light transition-all"
           >
             <option value="">All Categories</option>
             {categories.map(category => (
               <option key={category} value={category}>
-                {category}
+                {category.charAt(0).toUpperCase() + category.slice(1)}
               </option>
             ))}
           </select>
@@ -69,7 +69,7 @@ function TaskFilters({ filters, categories, onChange }) {
 
         {/* Priority Selector */}
         <div className="form-group">
-          <label htmlFor="priority" className="block text-sm font-medium text-neutral mb-2">
+          <label htmlFor="priority" className="block text-sm font-medium text-gold mb-2">
             Priority
           </label>
           <select
@@ -77,7 +77,7 @@ function TaskFilters({ filters, categories, onChange }) {
             name="priority"
             value={filters.priority}
             onChange={handleChange}
-            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:border-secondary focus:ring-1 focus:ring-secondary text-neutral transition-all"
+            className="w-full px-4 py-3 bg-black-matte/50 border border-gold/20 rounded-lg focus:border-gold focus:ring-2 focus:ring-gold/20 text-gold-light transition-all"
           >
             <option value="">All Priorities</option>
             <option value="low">Low Priority</option>
@@ -88,7 +88,7 @@ function TaskFilters({ filters, categories, onChange }) {
 
         {/* Status Selector */}
         <div className="form-group">
-          <label htmlFor="status" className="block text-sm font-medium text-neutral mb-2">
+          <label htmlFor="status" className="block text-sm font-medium text-gold mb-2">
             Status
           </label>
           <select
@@ -96,7 +96,7 @@ function TaskFilters({ filters, categories, onChange }) {
             name="completed"
             value={filters.completed === undefined ? '' : filters.completed.toString()}
             onChange={handleChange}
-            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:border-secondary focus:ring-1 focus:ring-secondary text-neutral transition-all"
+            className="w-full px-4 py-3 bg-black-matte/50 border border-gold/20 rounded-lg focus:border-gold focus:ring-2 focus:ring-gold/20 text-gold-light transition-all"
           >
             <option value="">All Tasks</option>
             <option value="false">Active</option>
@@ -106,14 +106,14 @@ function TaskFilters({ filters, categories, onChange }) {
 
         {/* Sort Options */}
         <div className="form-group lg:col-span-4">
-          <label htmlFor="sort" className="block text-sm font-medium text-neutral mb-2">
+          <label htmlFor="sort" className="block text-sm font-medium text-gold mb-2">
             Sort By
           </label>
           <select
             id="sort"
             value={`${filters.sortBy}-${filters.sortOrder}`}
             onChange={handleSortChange}
-            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:border-secondary focus:ring-1 focus:ring-secondary text-neutral transition-all"
+            className="w-full px-4 py-3 bg-black-matte/50 border border-gold/20 rounded-lg focus:border-gold focus:ring-2 focus:ring-gold/20 text-gold-light transition-all"
           >
             <option value="createdAt-desc">Newest First</option>
             <option value="createdAt-asc">Oldest First</option>

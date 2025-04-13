@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Header.css';
-import tlmLogo from '../../assets/The Last Mile LOGO R 4 HORIZONTAL White No Tagline.png';
+import tlmLogo from '../../assets/tlm-logo.png';
+import strayGearLogo from '../../assets/stray-gear.png';
 
 function Header() {
   const [userName, setUserName] = useState('');
@@ -36,7 +37,7 @@ function Header() {
         />
         <button 
           type="submit" 
-          className="px-6 py-2 bg-gradient-to-r from-primary to-secondary text-white font-medium rounded-lg hover:shadow-glow transition-all duration-300"
+          className="px-6 py-2 bg-gradient-metallic from-gold-light to-gold-dark text-black-rich font-medium rounded-lg hover:shadow-gold transition-all duration-300"
         >
           Save
         </button>
@@ -46,10 +47,10 @@ function Header() {
 
   const renderWelcomeMessage = () => (
     <div className="flex items-center gap-4 animate-fade-in">
-      <h1 className="text-xl text-gradient-accent">Welcome, {userName}!</h1>
+      <h1 className="text-xl font-medium text-gradient-accent">Welcome, {userName}!</h1>
       <button
         onClick={() => setShowNameInput(true)}
-        className="px-4 py-2 border border-secondary/30 text-secondary rounded-lg hover:bg-secondary/10 transition-all"
+        className="px-4 py-2 border border-gold/30 text-gold rounded-lg hover:bg-gold/10 transition-all"
       >
         Change Name
       </button>
@@ -60,14 +61,16 @@ function Header() {
     <header className="header-container">
       <div className="container mx-auto">
         <div className="header-content">
-          <div className="flex items-center gap-6">
-            <img
-              src={tlmLogo}
-              alt="The Last Mile Logo"
-              className="h-12 object-contain"
-            />
-            <div className="h-8 w-px bg-white/10"></div>
-            <h1 className="text-2xl font-semibold text-gradient-primary">Todo List</h1>
+          <div className="flex items-center gap-8">
+            <div className="flex items-center gap-4">
+              <img
+                src={strayGearLogo}
+                alt="StrayDogSyndications Logo"
+                className="h-12 w-12 object-contain animate-pulse-gold"
+              />
+              <div className="h-12 w-px bg-gold/20"></div>
+              <h1 className="text-2xl font-bold metallic-text">StrayDogSyndications - To Do List</h1>
+            </div>
           </div>
           {showNameInput ? renderNameInput() : renderWelcomeMessage()}
         </div>
