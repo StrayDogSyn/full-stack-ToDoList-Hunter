@@ -1,0 +1,43 @@
+{
+  "name": "todolist-backend",
+  "version": "1.0.0",
+  "description": "Backend for the Todo List application",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server-simple.js",
+    "start:demo": "node src/server-demo.js",
+    "start:db": "node src/server.js",
+    "dev": "nodemon src/server-simple.js",
+    "dev:demo": "nodemon src/server-demo.js",
+    "dev:db": "nodemon src/server.js",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.18.2",
+    "mongodb": "^6.14.2",
+    "mongoose": "^8.12.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^8.57.1",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.1",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.14.1",
+    "@typescript-eslint/eslint-plugin": "^8.29.1",
+    "@typescript-eslint/parser": "^8.29.1",
+    "eslint": "^8.57.1",
+    "eslint-plugin-react": "^7.37.4",
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.3",
+    "supertest": "^6.3.4",
+    "ts-jest": "^29.3.1",
+    "typescript": "^5.8.3"
+  }
+}
