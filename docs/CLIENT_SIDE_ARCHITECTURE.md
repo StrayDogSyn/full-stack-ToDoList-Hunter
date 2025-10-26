@@ -53,9 +53,11 @@ const storedTasks = localStorage.getItem('todoTasks') || DEMO_TASKS;
 ### File Changes
 
 **Modified:**
+
 - `frontend/src/App.js` - Removed axios, added localStorage logic
 
 **Unchanged:**
+
 - UI Components (TaskForm, TaskFilters, Header, Footer)
 - Styling (TailwindCSS, custom animations)
 - Build configuration (vercel.json)
@@ -63,6 +65,7 @@ const storedTasks = localStorage.getItem('todoTasks') || DEMO_TASKS;
 ## Full-Stack Option
 
 The backend code remains available in the repository for developers who want to:
+
 - Deploy with MongoDB persistence
 - Add team collaboration features
 - Implement user authentication
@@ -70,7 +73,7 @@ The backend code remains available in the repository for developers who want to:
 
 ### Backend Files (Available but not deployed)
 
-```
+```text
 backend/
 ├── src/
 │   ├── server.js          # Express server with MongoDB
@@ -120,6 +123,7 @@ npm run build
 ## Future Enhancements
 
 If backend integration is desired:
+
 1. Deploy backend to Railway/Render/Heroku
 2. Add REACT_APP_API_URL environment variable in Vercel
 3. Uncomment axios calls in App.js
@@ -129,12 +133,14 @@ If backend integration is desired:
 ## Best Practices
 
 ### Client-Side Storage
+
 - Always validate data before storing
 - Handle storage quota errors gracefully
 - Provide export/import functionality
 - Clear old data periodically
 
 ### Security
+
 - Sanitize user input
 - Don't store sensitive data in localStorage
 - Use HTTPS for production deployment
