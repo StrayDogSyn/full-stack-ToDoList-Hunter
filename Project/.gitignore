@@ -1,0 +1,14 @@
+node_modules/
+.env
+*.log
+logs/
+/dist
+/build
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+coverage/
+*.swp
+*.swo
+mongosh-2.3.8-win32-x64/

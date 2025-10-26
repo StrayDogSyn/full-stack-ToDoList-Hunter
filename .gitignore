@@ -65,3 +65,4 @@ mongod.log
 mongosh-2.3.8-win32-x64/
 playground-*.js
 
+node_modules
