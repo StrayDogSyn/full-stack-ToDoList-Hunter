@@ -1,3 +1,2 @@
-[submodule "Project/Project/frontend"]
-	path = Project/Project/frontend
-	url = https://github.com/StrayDogSyn/full-stack-ToDoList-Hunter.git
+# .gitmodules content removed to avoid Vercel attempting to init submodules during CI
+# Previously referenced: Project/Project/frontend
