@@ -4,7 +4,7 @@
 
 ### A Modern Full-Stack Task Management Solution
 
-[![Live Demo](https://img.shields.io/badge/demo-live-success?style=for-the-badge&logo=vercel)](https://your-app-name.vercel.app)
+[![Live Demo](https://img.shields.io/badge/demo-live-success?style=for-the-badge&logo=vercel)](https://full-stack-to-do-list-hunter-fronte.vercel.app)
 [![License](https://img.shields.io/badge/license-proprietary-blue?style=for-the-badge)](LICENSE)
 [![Deployed on Vercel](https://img.shields.io/badge/Vercel-Pro-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com)
 
@@ -47,9 +47,11 @@
 
 ## 🎯 Overview
 
-A sleek, production-ready full-stack todo list application featuring a modern interface powered by React, Node.js, and MongoDB. Built with enterprise-grade practices, comprehensive testing, and optimized for performance, this application demonstrates professional development standards and clean architecture principles.
+A sleek, production-ready todo list application featuring a modern React interface with client-side data persistence. Built with enterprise-grade practices and optimized for instant deployment, this application demonstrates professional development standards and clean architecture principles.
 
-**Perfect for portfolio demonstrations and real-world task management needs.**
+**Perfect for portfolio demonstrations - no backend infrastructure required!**
+
+> 🚀 **Demo Mode**: The live deployment uses localStorage for data persistence, making it instantly accessible without database setup. All CRUD operations work seamlessly in the browser.
 
 > 📚 **Comprehensive Documentation**: All deployment guides, migration details, and tutorials are available in the [`/docs`](./docs) folder.
 
@@ -57,22 +59,22 @@ A sleek, production-ready full-stack todo list application featuring a modern in
 
 ### 🎨 Modern Task Management
 - **Intuitive Interface** - Clean, responsive design that works flawlessly across all devices
-- **Real-Time Updates** - Instant synchronization with MongoDB backend
-- **Smart Filtering** - Efficiently organize and filter tasks by status
+- **Persistent Storage** - localStorage ensures your tasks survive browser sessions
+- **Smart Filtering** - Efficiently organize and filter tasks by category, priority, and status
 - **Responsive Design** - Mobile-first approach with Tailwind CSS
 
 ### 🔧 Technical Excellence
-- **Full TypeScript Support** - Type-safe code with comprehensive type definitions
-- **Comprehensive Testing** - Jest test suites for frontend and backend
-- **RESTful API** - Well-structured Express.js endpoints
-- **Error Handling** - Robust middleware for error management and logging
-- **Production Ready** - Optimized build process and Netlify deployment configuration
+- **Client-Side Architecture** - No backend required, perfect for static hosting
+- **Full TypeScript Support** - Type-safe code with comprehensive type definitions (backend)
+- **Comprehensive Testing** - Jest test suites for quality assurance
+- **Demo Data** - Pre-loaded sample tasks for first-time users
+- **Production Ready** - Optimized build process and Vercel deployment
 
 ### 🛡️ Quality Assurance
 - **ESLint Integration** - Consistent code quality standards
 - **Automated Testing** - Unit and integration test coverage
-- **Request Logging** - Detailed logging middleware for debugging
-- **Environment Configuration** - Secure environment variable management
+- **Error Handling** - Graceful error management and user feedback
+- **Environment Configuration** - Flexible configuration for different deployment scenarios
 
 ## 🏗️ Architecture
 
@@ -126,42 +128,77 @@ A sleek, production-ready full-stack todo list application featuring a modern in
 
 ## 🚀 Quick Start
 
-### Prerequisites
+### Live Demo
 
+**👉 [View Live Application](https://full-stack-to-do-list-hunter-fronte.vercel.app)**
+
+No setup required! The application runs entirely in your browser with localStorage persistence.
+
+### Local Development
+
+**Prerequisites:**
 - Node.js 18.x or higher
-- MongoDB Atlas account (or local MongoDB instance)
 - npm or yarn package manager
 
-### Environment Variables
-
-Create a `.env` file in the backend directory:
-
-```env
-MONGODB_URI=your_mongodb_connection_string
-PORT=5000
-NODE_ENV=development
-```
-
-## ⚙️ Installation
-
-### Option 1: Automated Setup (Recommended)
+**Setup:**
 
 ```bash
 # Clone the repository
 git clone https://github.com/StrayDogSyn/full-stack-ToDoList-Hunter.git
-cd full-stack-ToDoList-Hunter
+cd full-stack-ToDoList-Hunter/frontend
 
-# Install all dependencies (frontend + backend)
-npm run install:all
+# Install dependencies
+npm install
 
-# Start development servers
-npm run start:backend   # Terminal 1 - API server (port 5000)
-npm run start:frontend  # Terminal 2 - React app (port 3000)
+# Start development server
+npm start
 ```
 
-### Option 2: Manual Setup
+The application will open at `http://localhost:3000`
+
+### Features in Action
+
+✅ **Create Tasks** - Add tasks with title, description, category, priority, and due date  
+✅ **Filter & Sort** - Organize by category, priority, completion status  
+✅ **Persistent Data** - Tasks automatically saved to localStorage  
+✅ **Demo Data** - Sample tasks included for first-time users  
+
+## ⚙️ Installation
+
+### Frontend-Only Deployment (Current)
+
+The application currently runs as a client-side React app with localStorage persistence:
+
+```bash
+# Install frontend dependencies
+cd frontend
+npm install
+
+# Build for production
+npm run build
+
+# Deploy to Vercel, Netlify, or any static host
+```
+
+### Full-Stack Setup (Optional)
+
+For developers wanting to explore the backend architecture:
 
 **Backend Setup:**
+
+```bash
+cd backend
+npm install
+
+# Create .env file with MongoDB connection
+echo "MONGODB_URI=your_mongodb_connection_string" > .env
+echo "PORT=5001" >> .env
+
+# Start backend server
+npm start
+```
+
+**Frontend with Backend:**
 
 ```bash
 cd backend
