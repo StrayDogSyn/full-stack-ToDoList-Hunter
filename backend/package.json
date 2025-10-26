@@ -6,7 +6,9 @@
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
+    "start:demo": "node src/server-demo.js",
     "dev": "nodemon src/server.js",
+    "dev:demo": "nodemon src/server-demo.js",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "lint": "eslint .",
